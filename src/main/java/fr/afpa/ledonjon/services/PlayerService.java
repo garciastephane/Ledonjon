@@ -8,7 +8,5 @@ public class PlayerService {
 		return new Player(9 + UtilService.RamdomNumberGenerator(5), 2 + UtilService.RamdomNumberGenerator(2), 0, true, start);
 	}
 	
-	public static void Heal(Player didier) {
-		didier.setHealthPoint(didier.getHealthPoint()+1+ UtilService.RamdomNumberGenerator(2));
-	}
+	
 }
