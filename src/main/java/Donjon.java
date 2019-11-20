@@ -10,7 +10,9 @@ public class Donjon {
 	Coordonate map;
 	
 	/**
-	 *
+	 * @param didier
+	 * @param mobs
+	 * @param map
 	 */
 	public Donjon(Player didier, ArrayList<Mob> mobs, Coordonate map) {
 		super();
@@ -18,5 +20,51 @@ public class Donjon {
 		this.mobs = mobs;
 		this.map = map;
 	}
+
+	/**
+	 * @return the didier
+	 */
+	public Player getDidier() {
+		return didier;
+	}
+
+	/**
+	 * @param didier the didier to set
+	 */
+	public void setDidier(Player didier) {
+		this.didier = didier;
+	}
+
+	/**
+	 * @return the mobs
+	 */
+	public ArrayList<Mob> getMobs() {
+		return mobs;
+	}
+
+	/**
+	 * @param mobs the mobs to set
+	 */
+	public void setMobs(ArrayList<Mob> mobs) {
+		this.mobs = mobs;
+	}
+
+	/**
+	 * @return the map
+	 */
+	public Coordonate getMap() {
+		return map;
+	}
+
+	/**
+	 * @param map the map to set
+	 */
+	public void setMap(Coordonate map) {
+		this.map = map;
+	}
+	
+	
+	
+	
 	
 }
