@@ -1,3 +1,4 @@
+package fr.afpa.ledonjon.entites;
 import java.util.ArrayList;
 
 import fr.afpa.ledonjon.entites.Coordonate;
