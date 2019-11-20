@@ -115,4 +115,19 @@ public class Room {
 		this.visited = visited;
 	}
 
+	/**
+	 * @return the items
+	 */
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+
+	/**
+	 * @param items the items to set
+	 */
+	public void setItems(ArrayList<Item> items) {
+		this.items = items;
+	}
+
+	
 }

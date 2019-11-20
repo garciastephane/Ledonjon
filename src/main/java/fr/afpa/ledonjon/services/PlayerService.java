@@ -8,5 +8,4 @@ public class PlayerService {
 		return new Player(9 + UtilService.RamdomNumberGenerator(5), 2 + UtilService.RamdomNumberGenerator(2), 0, true, start);
 	}
 
-	
 }
