@@ -18,5 +18,9 @@ public class ItemIhm {
 			System.out.println("THE LOOT !!!! THE LOOT !!!! You get "+receavedGold+" shiny gold coins ");
 		}
 	}
+
+	public static void RewardDisplay(int d100) {
+		
+	}
 	
 }
