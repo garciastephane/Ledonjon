@@ -9,6 +9,11 @@ import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.StrengthPotion;
 
 public class PlayerIhm {
+	
+	/**
+	 * Methode qui permets de consulter la salle ou le joueur se situe
+	 * @param donjon
+	 */
 	public void LookAround(Donjon donjon) {
 		System.out.println("Player\n   HP       : " + donjon.getDidier().getHealthPoint() + "\n   Strength : "
 				+ donjon.getDidier().getStrength() + "\n   Gold     : " + donjon.getDidier().getGold());

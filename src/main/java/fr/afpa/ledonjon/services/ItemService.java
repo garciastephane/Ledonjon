@@ -1,6 +1,5 @@
 package fr.afpa.ledonjon.services;
 
-
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
 import fr.afpa.ledonjon.entites.Item;
@@ -11,39 +10,43 @@ import fr.afpa.ledonjon.entites.StrengthPotion;
 import fr.afpa.ledonjon.ihm.ItemIhm;
 
 public class ItemService {
-	
+
 	/**
 	 * Methode pour creer une potion de vie
+	 * 
 	 * @param room
 	 */
 	public static void CreateHealthPotion(Room room) {
-		room.getItems().add(new HealthPotion());	
+		room.getItems().add(new HealthPotion());
 	}
-	
+
 	/**
 	 * Methode pour creer une potion de force
+	 * 
 	 * @param room
 	 */
 	public static void CreateStrengthPotion(Room room) {
 		room.getItems().add(new StrengthPotion());
 	}
+
 	/**
-	 *  Methode pour creer une poche d or
+	 * Methode pour creer une poche d or
+	 * 
 	 * @param room
 	 */
-	
+
 	public static void CreateGoldPouch(Room room) {
 		room.getItems().add(new GoldPouch());
 	}
-	
+
 	/**
-		 *  Methode pour creer une machine a sous
-		 */
+	 * Methode pour creer une machine a sous
+	 */
 	public static void CreateSlotMachine(Room room) {
 		room.getItems().add(new SlotMachine());
-		
-		
+
 	}
+
 	public static void Heal(Player didier) {
 		int receavedHp = UtilService.RamdomNumberGenerator(2) + 1;
 		PlayerService.GainHp(didier, receavedHp);
@@ -52,15 +55,19 @@ public class ItemService {
 
 	public static void GainStrength(Player didier) {
 		didier.setStrength(didier.getStrength() + 1);
-		PlayerService.BeinStrongther(didier , 1);
+		PlayerService.BeinStrongther(didier, 1);
 		ItemIhm.GainStrengthDisplay();
 	}
 
 	public static void LootGold(Player didier) {
 		int receavedGold = UtilService.RamdomNumberGenerator(8) + 1;
-		PlayerService.WinGold(didier,receavedGold);
+		PlayerService.WinGold(didier, receavedGold);
 		ItemIhm.LootGoldDisplay(receavedGold);
 	}
+	/**
+	 * Methode pour creer une machine a sous 
+	 * @param didier
+	 */
 
 	public static void Gamble(Player didier) {
 		int d100 = UtilService.RamdomNumberGenerator(100) + 1;

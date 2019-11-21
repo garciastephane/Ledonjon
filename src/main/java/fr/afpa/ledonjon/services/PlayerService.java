@@ -61,13 +61,29 @@ public class PlayerService {
 		}
 	}
 
+	/**
+	 * Methode qui permets de gagner des points de vie
+	 * @param didier
+	 * @param receavedHp
+	 */
 	public static void GainHp(Player didier, int receavedHp) {
 		didier.setHealthPoint(didier.getHealthPoint() + receavedHp);
 	}
 
+	/**
+	 * Methode qui permets de gagner de la force
+	 * @param didier
+	 * @param strengthGain
+	 */
 	public static void BeinStrongther(Player didier, int strengthGain) {
 		didier.setStrength(didier.getStrength() + strengthGain);
 	}
+	
+	/**
+	 * Methode qui permets de gagner des pieces d ors
+	 * @param didier
+	 * @param receavedGold
+	 */
 
 	public static void WinGold(Player didier, int receavedGold) {
 		didier.setGold(didier.getGold() + receavedGold);
