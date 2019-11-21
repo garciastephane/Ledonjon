@@ -31,32 +31,18 @@ public class ItemService {
 		} else if (d100 > 50 && d100 <= 55) {
 			GainStrength(didier);
 		} else if (d100 > 55 && d100 <= 100) {
-			if (d100 > 55 && d100 <= 60) {
-
-			} else if (d100 > 60 && d100 <= 65) {
-
-			} else if (d100 > 60 && d100 <= 65) {
-
-			} else if (d100 > 65 && d100 <= 65) {
-
-			} else if (d100 > 70 && d100 <= 76) {
-
+			if (d100 > 60 && d100 <= 65) {
+				CharacterSevice.LoseHealth(didier, 1);
 			} else if (d100 == 77) {
-
-			} else if (d100 > 78 && d100 <= 80) {
-
-			} else if (d100 > 80 && d100 <= 85) {
-
-			} else if (d100 > 85 && d100 <= 95) {
-
+				PlayerService.WinGold(didier, 1000);
 			} else if (d100 > 95 && d100 <= 97) {
-
+				PlayerService.GainHp(didier, 5);
 			} else if (d100 == 98) {
-
+				CharacterSevice.LoseHealth(didier, didier.getHealthPoint()-1);
 			} else if (d100 == 99) {
-
+				CharacterSevice.LoseHealth(didier, didier.getHealthPoint());
 			} else if (d100 == 100) {
-
+				//useItem(new SlotMachine());
 			}
 			ItemIhm.RewardDisplay(d100);
 		}
