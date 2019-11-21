@@ -6,20 +6,35 @@ import java.util.Arrays;
 public class Try {
 	private final int x;
 	private final int y;
-	private final int[][] maze;
+	private final Room[][] maze;
  
+	public static void main(String[] args) {
+		int x = args.length >= 1 ? (Integer.parseInt(args[0])) : 10;
+		int y = args.length == 2 ? (Integer.parseInt(args[1])) : 10;
+		Try maze = new Try(x, y);
+		maze.display();
+	}
+	
 	public Try(int x, int y) {
 		this.x = x;
 		this.y = y;
-		maze = new int[this.x][this.y];
-		generateMaze(0, 0);
+		maze = new Room[this.x][this.y];
+		for (int i = 0; i < x; i++) {
+			for (int j = 0; j < y; j++) {
+				maze[i][j]= new Room();
+			}
+		}
+		maze[0][0]=new Start();
+		maze[x-1][y-1]=new End();
+		generateMaze(5, 5);
 	}
  
 	public void display() {
 		for (int i = 0; i < y; i++) {
 			// draw the north edge
 			for (int j = 0; j < x; j++) {
-				System.out.print((maze[j][i] & 1) == 0 ? "+---" : "+   ");
+				System.out.print((maze[j][i].getBit() & 1) == 0 ? "+---" : "+   ");
+				
 			}
 			System.out.println("+");
 			// draw the west edge
@@ -28,7 +43,7 @@ public class Try {
 					System.out.print("    ");
 				}
 				//else 
-				else System.out.print((maze[j][i] & 8) == 0 ? "|   " : "    ");
+				else System.out.print((maze[j][i].getBit() & 8) == 0 ? "|   " : "    ");
 			}
 			if (i == y-1) {System.out.println(" ");}
 			else System.out.println("|");
@@ -47,10 +62,9 @@ public class Try {
 		for (DIR dir : dirs) {
 			int nx = cx + dir.dx;
 			int ny = cy + dir.dy;
-			if (between(nx, x) && between(ny, y)
-					&& (maze[nx][ny] == 0)) {
-				maze[cx][cy] |= dir.bit;
-				maze[nx][ny] |= dir.opposite.bit;
+			if (between(nx, x) && between(ny, y) && (maze[nx][ny].getBit() == 0)) {
+				maze[cx][cy].setBit(maze[cx][cy].getBit() + dir.bit);
+				maze[nx][ny].setBit(maze[nx][ny].getBit() + dir.opposite.bit);
 				generateMaze(nx, ny);
 			}
 		}
@@ -82,11 +96,6 @@ public class Try {
 		}
 	};
  
-	public static void main(String[] args) {
-		int x = args.length >= 1 ? (Integer.parseInt(args[0])) : 9;
-		int y = args.length == 2 ? (Integer.parseInt(args[1])) : 5;
-		Try maze = new Try(x, y);
-		maze.display();
-	}
+	
  
 }
