@@ -3,6 +3,7 @@ package fr.afpa.ledonjon.services;
 
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
+import fr.afpa.ledonjon.entites.Item;
 import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.SlotMachine;
@@ -93,13 +94,16 @@ public class ItemService {
 			} else if (d100 == 98) {
 
 			} else if (d100 == 99) {
-
-			} else if (d100 == 100) {
-
+				CharacterSevice.LoseHealth(didier, didier.getHealthPoint());
 			}
 			ItemIhm.RewardDisplay(d100);
+			if (d100 == 100) {
+				if (didier.getGold() > 0) ItemService.Gamble(didier);
+			}
 		}
 	}
 
-	
+	public static void RemoveItem(Room room, Item item) {
+		room.getItems().remove(item);
+	}
 }

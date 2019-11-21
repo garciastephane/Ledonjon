@@ -1,8 +1,14 @@
 package fr.afpa.ledonjon.services;
 
 import fr.afpa.ledonjon.entites.Player;
+import fr.afpa.ledonjon.entites.Room;
+import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.Start;
+import fr.afpa.ledonjon.entites.StrengthPotion;
 import fr.afpa.ledonjon.entites.Character;
+import fr.afpa.ledonjon.entites.GoldPouch;
+import fr.afpa.ledonjon.entites.HealthPotion;
+import fr.afpa.ledonjon.entites.Item;
 
 public class PlayerService {
 	/**
@@ -17,6 +23,27 @@ public class PlayerService {
 	}
 
 	/**
+	 * 
+	 * @param didier
+	 * @param room
+	 * @param item
+	 */
+	public static void UseItem(Player didier, Room room, Item item) {
+		if (item instanceof HealthPotion) {
+			ItemService.Heal(didier);
+		} else if (item instanceof StrengthPotion) {
+			ItemService.GainStrength(didier);
+		} else if (item instanceof GoldPouch) {
+			ItemService.LootGold(didier);
+		} else if (item instanceof SlotMachine) {
+			if (didier.getGold() > 0) {
+				ItemService.Gamble(didier);
+			}
+		}
+		ItemService.RemoveItem(room, item);
+	}
+
+	/**
 	 * Methode qui permets a un player d'attaquer un mob
 	 * 
 	 * @param attacker
@@ -25,12 +52,12 @@ public class PlayerService {
 	public static void Attack(Character attacker, Character defender) {
 		System.out.println("---------------------\n");
 		System.out.println("You attack the monster for " + attacker.getStrength() + " damages");
-		if(CharacterSevice.LoseHealth(defender, attacker.getStrength())) {
+		if (CharacterSevice.LoseHealth(defender, attacker.getStrength())) {
 			System.out.println("\nCongratulations! you beat that little bastard!" + defender.getGold() + "gold! \n");
-			WinGold((Player)attacker, defender.getGold());
-		}else {
+			WinGold((Player) attacker, defender.getGold());
+		} else {
 			System.out.println("that filthy creature got" + attacker.getHealthPoint() + " HP left");
-			MobService.Attack(defender, attacker );
+			MobService.Attack(defender, attacker);
 		}
 	}
 

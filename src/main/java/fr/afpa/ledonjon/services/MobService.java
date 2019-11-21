@@ -1,7 +1,7 @@
 package fr.afpa.ledonjon.services;
 
 import fr.afpa.ledonjon.entites.Character;
-import fr.afpa.ledonjon.entites.Coordonate;
+import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.Mob;
 import fr.afpa.ledonjon.entites.Room;
 
@@ -11,15 +11,15 @@ public class MobService {
 	 * @param map
 	 * @return
 	 */
-	public static Mob CreateMob(Coordonate map) {
-		Room room = RoomServices.FindValidRoom(map);
+	public static Mob CreateMob(Donjon donjon) {
+		Room room = RoomServices.FindValidRoom(donjon);
 		return new Mob(7 + UtilService.RamdomNumberGenerator(5), 2 + UtilService.RamdomNumberGenerator(2),
 				UtilService.RamdomNumberGenerator(9), true, room);
 
 	}
 
 	/**
-	 * Methode qui permets à un mob d'attaquer un player
+	 * Methode qui permets ï¿½ un mob d'attaquer un player
 	 * 
 	 * @param attacker
 	 * @param defender
