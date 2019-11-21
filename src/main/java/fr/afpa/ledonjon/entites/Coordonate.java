@@ -2,8 +2,8 @@ package fr.afpa.ledonjon.entites;
 
 public class Coordonate {
 	
-	public static final int absciss = 6;
-	public static final int ordonate = 3;
+	public static final int absciss = 9;
+	public static final int ordonate = 5;
 	Room[][] coordonate;
 	
 	/**
@@ -43,6 +43,7 @@ public class Coordonate {
 	}
 
 
+	
 	
 	
 }
