@@ -24,15 +24,21 @@ public class Try {
 			System.out.println("+");
 			// draw the west edge
 			for (int j = 0; j < x; j++) {
-				System.out.print((maze[j][i] & 8) == 0 ? "|   " : "    ");
+				if (j==0 && i ==0) {
+					System.out.print("    ");
+				}
+				//else 
+				else System.out.print((maze[j][i] & 8) == 0 ? "|   " : "    ");
 			}
-			System.out.println("|");
+			if (i == y-1) {System.out.println(" ");}
+			else System.out.println("|");
 		}
 		// draw the bottom line
 		for (int j = 0; j < x; j++) {
 			System.out.print("+---");
 		}
 		System.out.println("+");
+		
 	}
  
 	private void generateMaze(int cx, int cy) {
