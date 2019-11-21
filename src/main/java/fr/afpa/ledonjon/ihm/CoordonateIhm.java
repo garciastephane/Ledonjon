@@ -3,6 +3,10 @@ package fr.afpa.ledonjon.ihm;
 import fr.afpa.ledonjon.entites.Coordonate;
 
 public class CoordonateIhm {
+	
+	/**
+	 * Methode qui permets l affichage de la map pleine
+	 */
 
 	public static void affichageMazePlein() {
 		

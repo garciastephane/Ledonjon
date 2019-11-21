@@ -4,6 +4,11 @@ import fr.afpa.ledonjon.entites.Donjon;
 
 public class DonjonIhm {
 	
+	/**
+	 * Methode qui permets de afficher le donjon
+	 * @param donjon
+	 */
+	
 	public static void DisplayDonjon(Donjon donjon) {
 		for (int i = 0; i < donjon.getY(); i++) {
 			// draw the north edge

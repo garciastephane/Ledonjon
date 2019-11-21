@@ -1,6 +1,10 @@
 package fr.afpa.ledonjon.ihm;
 
 public class MenuIhm {
+	
+	/**
+	 * Methode qui permets d afficher le menu
+	 */
 
 	public void DisplayPlayerMenu() {
 
@@ -14,7 +18,8 @@ public class MenuIhm {
 
 	}
 
-public void StartMenu() {
+/**
+ * public void StartMenu() {
 	System.out.println("**************MENU***************");
 	
 	do {
@@ -25,4 +30,7 @@ public void StartMenu() {
 		
 	
 	}
+}
+ */
+
 }

@@ -46,6 +46,11 @@ public class ItemService {
 		room.getItems().add(new SlotMachine());
 
 	}
+	
+	/**
+	 * Methode pour faire gagner des points de vie au joueur
+	 * @param didier
+	 */
 
 	public static void Heal(Player didier) {
 		int receavedHp = UtilService.RamdomNumberGenerator(2) + 1;
@@ -53,12 +58,20 @@ public class ItemService {
 		ItemIhm.HealDisplay(receavedHp);
 	}
 
+	/**
+	 * Methode pour faire gagner de la force au joueur
+	 * @param didier
+	 */
 	public static void GainStrength(Player didier) {
 		didier.setStrength(didier.getStrength() + 1);
 		PlayerService.BeinStrongther(didier, 1);
 		ItemIhm.GainStrengthDisplay();
 	}
 
+	/**
+	 * Methode pour donner de l or au joueur
+	 * @param didier
+	 */
 	public static void LootGold(Player didier) {
 		int receavedGold = UtilService.RamdomNumberGenerator(8) + 1;
 		PlayerService.WinGold(didier, receavedGold);
@@ -110,6 +123,11 @@ public class ItemService {
 		}
 	}
 
+	/**
+	 * Methode pour retirer de l or a un personnaje
+	 * @param room
+	 * @param item
+	 */
 	public static void RemoveItem(Room room, Item item) {
 		room.getItems().remove(item);
 	}

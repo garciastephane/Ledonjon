@@ -23,7 +23,7 @@ public class PlayerService {
 	}
 
 	/**
-	 * 
+	 * Methode qui permets d utiliser un objet
 	 * @param didier
 	 * @param room
 	 * @param item
@@ -44,7 +44,7 @@ public class PlayerService {
 	}
 
 	/**
-	 * Methode qui permets a un player d'attaquer un mob
+	 * Methode qui permets a un personnaje d'attaquer un mob
 	 * 
 	 * @param attacker
 	 * @param defender
@@ -80,7 +80,7 @@ public class PlayerService {
 	}
 	
 	/**
-	 * Methode qui permets de gagner des pieces d ors
+	 * Methode qui permets de gagner des pieces d or
 	 * @param didier
 	 * @param receavedGold
 	 */

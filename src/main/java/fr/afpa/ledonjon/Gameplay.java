@@ -5,7 +5,7 @@ import fr.afpa.ledonjon.ihm.DonjonIhm;
 import fr.afpa.ledonjon.services.DonjonService;
 
 /**
- * Hello world!
+ * Creer un donjon
  *
  */
 public class Gameplay {

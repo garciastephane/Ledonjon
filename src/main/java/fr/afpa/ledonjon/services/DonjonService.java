@@ -8,6 +8,11 @@ import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.Room;
 
 public class DonjonService {
+	
+	/**
+	 * Methode qui permets de configurer le parametre X sur la map
+	 * @return
+	 */
 
 	public static int configXMaze() {
 		Scanner in = new Scanner(System.in);
@@ -17,6 +22,10 @@ public class DonjonService {
 		return x;
 	}
 	
+	/**
+	 * Methode qui permets de configurer le parametre Y sur la map
+	 * @return
+	 */
 	public static int configYMaze() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("hauteur du labyrinthe ?");
@@ -24,6 +33,13 @@ public class DonjonService {
 		in.nextLine();
 		return y;
 	}
+	
+	/**
+	 * Methode qui permets de generer la map
+	 * @param donjon
+	 * @param cx
+	 * @param cy
+	 */
 	
 	public static void generateMaze(Donjon donjon , int cx, int cy) {
 		DIR[] dirs = DIR.values();
@@ -39,6 +55,12 @@ public class DonjonService {
 		}
 	}
  
+	/**
+	 * Methode qui confirme si c est entre deux choses
+	 * @param v
+	 * @param upper
+	 * @return
+	 */
 	private static boolean between(int v, int upper) {
 		return (v >= 0) && (v < upper);
 	}
@@ -63,9 +85,14 @@ public class DonjonService {
 			this.dx = dx;
 			this.dy = dy;
 		}
-	};
+	}
  
 	
+	/**
+	 * Methode pour generer un mob
+	 * @param donjon
+	 * @return
+	 */
 	public static boolean generateMob(Donjon donjon) {
 
 		int numMob = UtilService.RamdomNumberGenerator(7) + 1;
@@ -76,6 +103,11 @@ public class DonjonService {
 		}
 		return true;
 	}
+	
+	/**
+	 * Methode pour generer un item
+	 * @param donjon
+	 */
 
 	public static void generateItem(Donjon donjon) {
 		int numItem = UtilService.RamdomNumberGenerator(7) + 1;
