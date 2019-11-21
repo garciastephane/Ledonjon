@@ -6,6 +6,11 @@ import fr.afpa.ledonjon.entites.Mob;
 import fr.afpa.ledonjon.entites.Room;
 
 public class MobService {
+	/**
+	 * Methode qui permets de creer un mob
+	 * @param map
+	 * @return
+	 */
 	public static Mob CreateMob(Coordonate map) {
 		Room room = RoomServices.FindValidRoom(map);
 		return new Mob(7 + UtilService.RamdomNumberGenerator(5), 2 + UtilService.RamdomNumberGenerator(2),

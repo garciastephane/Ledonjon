@@ -6,6 +6,11 @@ import fr.afpa.ledonjon.entites.Room;
 
 public class RoomServices {
 
+	/**
+	 * Methode qui permets de trouver une room valide
+	 * @param map
+	 * @return
+	 */
 	public static Room FindValidRoom(Coordonate map) {
 		Room room = null;
 		do {
