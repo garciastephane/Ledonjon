@@ -2,17 +2,24 @@ package fr.afpa.ledonjon.services;
 
 import fr.afpa.ledonjon.entites.Mob;
 import fr.afpa.ledonjon.entites.Player;
+import fr.afpa.ledonjon.ihm.ItemIhm;
 
 public class ItemService {
 	public static void Heal(Player didier) {
-		didier.setHealthPoint(didier.getHealthPoint() + UtilService.RamdomNumberGenerator(2) + 1);
+		int receavedHp = UtilService.RamdomNumberGenerator(2) + 1;
+		didier.setHealthPoint(didier.getHealthPoint() + receavedHp);
+		ItemIhm.HealDisplay(receavedHp);
+	}
+
+	public static void GainStrength(Mob mob) {
+		mob.setStrength(mob.getStrength() + 1);
+		ItemIhm.GainStrengthDisplay();
 	}
 
 	public static void LootGold(Player didier) {
-		didier.setHealthPoint(didier.getGold() + UtilService.RamdomNumberGenerator(8) + 1);
+		int receavedGold = UtilService.RamdomNumberGenerator(8) + 1;
+		didier.setHealthPoint(didier.getGold() + receavedGold);
+		ItemIhm.LootGoldDisplay(receavedGold);
 	}
-	
-	public static void gainStrength(Mob mob) {
-		mob.setStrength(mob.getStrength() + 1);
-	}
+
 }
