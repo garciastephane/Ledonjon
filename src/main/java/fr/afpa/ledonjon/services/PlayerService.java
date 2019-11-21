@@ -16,13 +16,22 @@ public class PlayerService {
 				start);
 	}
 
+	/**
+	 * Methode qui permets a un player d'attaquer un mob
+	 * 
+	 * @param attacker
+	 * @param defender
+	 */
 	public static void Attack(Character attacker, Character defender) {
 		System.out.println("---------------------\n");
 		System.out.println("You attack the monster for " + attacker.getStrength() + " damages");
-		CharacterSevice.LoseHealth(defender, attacker.getStrength());
-		System.out.println("Now, that disgusting and ugly monster got" + defender.getHealthPoint() + " HealthPoint");
-		System.out.println();
-
+		if(CharacterSevice.LoseHealth(defender, attacker.getStrength())) {
+			System.out.println("\nCongratulations! you beat that little bastard!" + defender.getGold() + "gold! \n");
+			WinGold((Player)attacker, defender.getGold());
+		}else {
+			System.out.println("that filthy creature got" + attacker.getHealthPoint() + " HP left");
+			MobService.Attack(defender, attacker );
+		}
 	}
 
 	public static void GainHp(Player didier, int receavedHp) {
