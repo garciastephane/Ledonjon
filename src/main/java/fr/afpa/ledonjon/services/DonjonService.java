@@ -2,12 +2,28 @@ package fr.afpa.ledonjon.services;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Scanner;
 
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.Room;
 
 public class DonjonService {
 
+	public static int configXMaze() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("largeur du labyrinthe ?");
+		int x=in.nextInt();
+		in.nextLine();
+		return x;
+	}
+	
+	public static int configYMaze() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("hauteur du labyrinthe ?");
+		int y=in.nextInt();
+		in.nextLine();
+		return y;
+	}
 	
 	public static void generateMaze(Donjon donjon , int cx, int cy) {
 		DIR[] dirs = DIR.values();

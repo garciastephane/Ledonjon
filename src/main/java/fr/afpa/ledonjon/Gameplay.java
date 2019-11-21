@@ -10,10 +10,8 @@ import fr.afpa.ledonjon.services.DonjonService;
  */
 public class Gameplay {
 	public static void main(String[] args) {
-		int tailleX = 10;
-		int tailleY = 10;
-		Donjon donjon = new Donjon(tailleX, tailleY);
-		DonjonService.generateMaze(donjon, tailleX / 2, tailleY / 2);
+		Donjon donjon = new Donjon(DonjonService.configXMaze(), DonjonService.configYMaze());
+		DonjonService.generateMaze(donjon, donjon.getX()/ 2, donjon.getY()/ 2);
 		DonjonIhm.DisplayDonjon(donjon);
 	}
 
