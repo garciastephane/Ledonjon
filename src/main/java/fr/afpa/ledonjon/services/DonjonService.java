@@ -136,4 +136,20 @@ public class DonjonService {
 			}
 		}
 	}
+	
+	public static Room findRoomAdj(Donjon donjon ,int x ,int y,String choix) {
+		if(choix=="N") {
+			return donjon.getMaze()[x][y-1];
+		}
+		else if (choix=="E") {
+			return donjon.getMaze()[x+1][y];
+		}
+		else if(choix=="S") {
+			return donjon.getMaze()[x][y+1];
+		}
+		else if(choix=="W") {
+			return donjon.getMaze()[x-1][y];
+		}
+		else return null;
+	}
 }

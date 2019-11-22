@@ -4,6 +4,9 @@ import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.StrengthPotion;
+
+import java.security.KeyStore.Entry;
+
 import fr.afpa.ledonjon.entites.Character;
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
@@ -86,4 +89,13 @@ public class PlayerService {
 	public static void WinGold(Player didier, int receavedGold) {
 		didier.setGold(didier.getGold() + receavedGold);
 	}
-}
+	
+	public static void Move(Room room,Room roomS) {
+	
+		roomS.setDidier(room.getDidier());
+		room.setDidier(null);
+		}
+	
+	
+	}
+
