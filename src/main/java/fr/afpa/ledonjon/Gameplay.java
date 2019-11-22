@@ -13,14 +13,15 @@ public class Gameplay {
 	public static void main(String[] args) {
 //		Donjon donjon = new Donjon(DonjonService.configXMaze(), DonjonService.configYMaze());
 //		DonjonService.generateMaze(donjon, donjon.getX()/ 2, donjon.getY()/ 2);
-		int tailleX = 10;
-		int tailleY = 10;
+		int tailleX = 5;
+		int tailleY = 5;
 		Donjon donjon = new Donjon(tailleX, tailleY);
 		DonjonService.generateMaze(donjon, tailleX / 2, tailleY / 2);
 		DonjonIhm.DisplayDonjon(donjon);
 		PlayerService.CreatePlayer(donjon.getMaze()[0][0]);
 		DonjonService.generateMob(donjon, tailleX ,tailleY);
 		DonjonService.generateItem(donjon, tailleX ,tailleY);
+		DonjonIhm.DisplayPlayerInDonjon(donjon);
 		DonjonIhm.DisplayFullDonjon(donjon);
 		System.out.println("oui");
 	}
