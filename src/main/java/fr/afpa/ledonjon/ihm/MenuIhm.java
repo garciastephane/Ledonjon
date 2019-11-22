@@ -7,7 +7,7 @@ import fr.afpa.ledonjon.entites.Room;
 public class MenuIhm {
 
 	/**
-	 * Methode qui permets d afficher le menu
+	 * Methode qui permets d afficher le menu initial au joueur
 	 */
 
 	public static void DisplayPlayerMenu() {
