@@ -36,6 +36,7 @@ public class DonjonIhm {
 			System.out.print("+-----");
 		}
 		System.out.println("+");
+		
 	}
 	
 	public static void DisplayFullDonjon(Donjon donjon) {
