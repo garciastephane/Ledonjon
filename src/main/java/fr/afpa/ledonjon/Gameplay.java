@@ -21,6 +21,7 @@ public class Gameplay {
 		PlayerService.CreatePlayer(donjon.getMaze()[0][0]);
 		DonjonService.generateMob(donjon, tailleX ,tailleY);
 		DonjonService.generateItem(donjon, tailleX ,tailleY);
+		DonjonIhm.DisplayFullDonjon(donjon);
 		System.out.println("oui");
 	}
 
