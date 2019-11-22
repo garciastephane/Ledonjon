@@ -1,13 +1,15 @@
 package fr.afpa.ledonjon.controles;
 
 import fr.afpa.ledonjon.entites.End;
+import fr.afpa.ledonjon.entites.Mob;
 import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.Start;
 
 public class RoomControl {
-	
+
 	/**
-	 * Methode qui permets de valider si c est une salle 
+	 * Methode qui permets de valider si c est une salle
+	 * 
 	 * @param room
 	 * @return
 	 */
@@ -18,4 +20,13 @@ public class RoomControl {
 		return true;
 	}
 
+	public static int numbAliveMob(Room room) {
+		int count = 0;
+		for (Mob mob : room.getMobs()) {
+			if (mob.isAlive()) {
+				count++;
+			}
+		}
+		return count;
+	}
 }
