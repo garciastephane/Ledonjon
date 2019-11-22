@@ -1,36 +1,31 @@
 package fr.afpa.ledonjon.ihm;
 
+import fr.afpa.ledonjon.controles.RoomControl;
+import fr.afpa.ledonjon.entites.Room;
+
+
 public class MenuIhm {
-	
+
 	/**
 	 * Methode qui permets d afficher le menu
 	 */
 
-	public void DisplayPlayerMenu() {
+	public static void DisplayPlayerMenu() {
+		Room room = null;
 
-		System.out.println("Move North");
-		System.out.println("Move Est");
-		System.out.println("Move West");
-		System.out.println("Move South");
+		System.out.println("*************MENU*************");
+
+		System.out.println("\n What do you want to do?\n");
 		System.out.println("Lock around");
-		System.out.println("Attack");
-		System.out.println();
 
+		if (RoomControl.numbAliveMob(room) > 0) {
+			System.out.println("Attack");
+		} else {
+			System.out.println("Move North");
+			System.out.println("Move Est");
+			System.out.println("Move West");
+			System.out.println("Move South");
+		}
 	}
-
-/**
- * public void StartMenu() {
-	System.out.println("**************MENU***************");
-	
-	do {
-		Display( "1) Create a donjon");
-		Display( "2) Create a player");
-		Display( "3) Play");
-		Display( "4) Quit");
-		
-	
-	}
-}
- */
 
 }

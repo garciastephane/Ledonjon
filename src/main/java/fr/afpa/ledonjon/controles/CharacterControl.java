@@ -11,6 +11,5 @@ public class CharacterControl {
 		return character.getHealthPoint() > 0;
 		
 	}
-
 	
 }
