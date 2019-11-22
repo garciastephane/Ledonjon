@@ -8,14 +8,16 @@ public class RoomServices {
 
 	/**
 	 * Methode qui permets de trouver une room valide
+	 * @param tailleY 
+	 * @param tailleX 
 	 * @param map
 	 * @return
 	 */
-	public static Room FindValidRoom(Donjon donjon) {
+	public static Room FindValidRoom(Donjon donjon,int tailleX,int tailleY) {
 		Room room = null;
 		do {
-			room = donjon.getMaze()[UtilService.RamdomNumberGenerator(6)][UtilService
-					.RamdomNumberGenerator(3)];
+			room = donjon.getMaze()[UtilService.RamdomNumberGenerator(tailleX)][UtilService
+					.RamdomNumberGenerator(tailleY)];
 			if (!RoomControl.isValidRoom(room)) {
 				room = null;
 			}

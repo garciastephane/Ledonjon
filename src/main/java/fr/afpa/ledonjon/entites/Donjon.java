@@ -1,12 +1,6 @@
 package fr.afpa.ledonjon.entites;
-import java.util.ArrayList;
-
-import fr.afpa.ledonjon.entites.Mob;
-import fr.afpa.ledonjon.entites.Player;
 
 public class Donjon {
-	Player didier;
-	ArrayList<Mob> mobs;
 	private int x;
 	private int y;
 	private final Room[][] maze;
@@ -18,8 +12,6 @@ public class Donjon {
 	 */
 	public Donjon(int x, int y) {
 		super();
-		this.didier = null;
-		this.mobs = null;
 		this.x = x;
 		this.y = y;
 		maze = new Room[x][y];
@@ -30,34 +22,6 @@ public class Donjon {
 		}
 		maze[0][0]=new Start();
 		maze[x-1][y-1]=new End();
-	}
-
-	/**
-	 * @return the didier
-	 */
-	public Player getDidier() {
-		return didier;
-	}
-
-	/**
-	 * @param didier the didier to set
-	 */
-	public void setDidier(Player didier) {
-		this.didier = didier;
-	}
-
-	/**
-	 * @return the mobs
-	 */
-	public ArrayList<Mob> getMobs() {
-		return mobs;
-	}
-
-	/**
-	 * @param mobs the mobs to set
-	 */
-	public void setMobs(ArrayList<Mob> mobs) {
-		this.mobs = mobs;
 	}
 
 	/**

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Room {
 	private int bit;
+	Player didier;
+	ArrayList<Mob> mobs;
 	ArrayList<Item> items;
 
 	/**
@@ -19,7 +21,8 @@ public class Room {
 	public Room() {
 		super();
 		this.bit = 0;
-		items = new ArrayList<Item>(); 
+		mobs = new ArrayList<Mob>();
+		items = new ArrayList<Item>();
 	}
 
 	/**
@@ -44,6 +47,38 @@ public class Room {
 		this.bit = bit;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Room [bit=" + bit + "]";
+	}
+
+	/**
+	 * @return the didier
+	 */
+	public Player getDidier() {
+		return didier;
+	}
+
+	/**
+	 * @param didier the didier to set
+	 */
+	public void setDidier(Player didier) {
+		this.didier = didier;
+	}
+
+	/**
+	 * @return the mobs
+	 */
+	public ArrayList<Mob> getMobs() {
+		return mobs;
+	}
+
+	/**
+	 * @param mobs the mobs to set
+	 */
+	public void setMobs(ArrayList<Mob> mobs) {
+		this.mobs = mobs;
+	}
+
 	
 }

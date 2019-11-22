@@ -9,8 +9,8 @@ public class Mob extends Character {
 	 * @param alive
 	 * @param room
 	 */
-	public Mob(int healthPoint, int strength, int gold, boolean alive, Room room) {
-		super(healthPoint, strength, gold, alive, room);
+	public Mob(int healthPoint, int strength, int gold, boolean alive) {
+		super(healthPoint, strength, gold, alive);
 	}
 
 }

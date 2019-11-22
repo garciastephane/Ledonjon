@@ -6,8 +6,7 @@ public abstract class Character {
 	private int strength;
 	private int gold;
 	private boolean alive;
-	private Room room;
-
+	
 	/**
 	 * @param healthPoint
 	 * @param strength
@@ -15,13 +14,12 @@ public abstract class Character {
 	 * @param alive
 	 * @param room
 	 */
-	public Character(int healthPoint, int strength, int gold, boolean alive, Room room) {
+	public Character(int healthPoint, int strength, int gold, boolean alive) {
 		super();
 		this.healthPoint = healthPoint;
 		this.strength = strength;
 		this.gold = gold;
 		this.alive = alive;
-		this.room = room;
 	}
 
 	/**
@@ -80,18 +78,5 @@ public abstract class Character {
 		this.alive = alive;
 	}
 
-	/**
-	 * @return the room
-	 */
-	public Room getRoom() {
-		return room;
-	}
-
-	/**
-	 * @param room the room to set
-	 */
-	public void setRoom(Room room) {
-		this.room = room;
-	}
 
 }
