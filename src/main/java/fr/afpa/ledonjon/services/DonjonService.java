@@ -99,7 +99,7 @@ public class DonjonService {
 	 * @return
 	 */
 	public static boolean generateMob(Donjon donjon, int tailleX, int tailleY) {
-		int numMob = UtilService.RamdomNumberGenerator(10) + 1;
+		int numMob = UtilService.RamdomNumberGenerator(7) + 1;
 		for (int i = 0; i < numMob; i++) {
 			MobService.CreateMob(donjon, tailleX, tailleY);
 		}

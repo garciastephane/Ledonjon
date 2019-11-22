@@ -13,8 +13,8 @@ public class Gameplay {
 	public static void main(String[] args) {
 //		Donjon donjon = new Donjon(DonjonService.configXMaze(), DonjonService.configYMaze());
 //		DonjonService.generateMaze(donjon, donjon.getX()/ 2, donjon.getY()/ 2);
-		int tailleX = 3;
-		int tailleY = 3;
+		int tailleX = 10;
+		int tailleY = 10;
 		Donjon donjon = new Donjon(tailleX, tailleY);
 		DonjonService.generateMaze(donjon, tailleX / 2, tailleY / 2);
 		DonjonIhm.DisplayDonjon(donjon);

@@ -1,5 +1,10 @@
 package fr.afpa.ledonjon.entites;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Donjon {
 	private int x;
 	private int y;
@@ -23,42 +28,5 @@ public class Donjon {
 		maze[0][0]=new Start();
 		maze[x-1][y-1]=new End();
 	}
-
-	/**
-	 * @return the x
-	 */
-	public int getX() {
-		return x;
-	}
-
-	/**
-	 * @return the y
-	 */
-	public int getY() {
-		return y;
-	}
-
-	/**
-	 * @return the maze
-	 */
-	public Room[][] getMaze() {
-		return maze;
-	}
-
-	/**
-	 * @param x the x to set
-	 */
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	/**
-	 * @param y the y to set
-	 */
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	
 
 }

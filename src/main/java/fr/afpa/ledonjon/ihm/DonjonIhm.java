@@ -36,6 +36,9 @@ public class DonjonIhm {
 			System.out.print("+-----");
 		}
 		System.out.println("+");
-
+	}
+	
+	public static void AppliChoice(String choix) {
+		
 	}
 }
