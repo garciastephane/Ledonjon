@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 import fr.afpa.ledonjon.entites.Donjon;
+import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
 
 public class DonjonService {
@@ -136,20 +137,43 @@ public class DonjonService {
 			}
 		}
 	}
-	
-	public static Room findRoomAdj(Donjon donjon ,int x ,int y,String choix) {
-		if(choix=="N") {
-			return donjon.getMaze()[x][y-1];
-		}
-		else if (choix=="E") {
-			return donjon.getMaze()[x+1][y];
-		}
-		else if(choix=="S") {
-			return donjon.getMaze()[x][y+1];
-		}
-		else if(choix=="W") {
-			return donjon.getMaze()[x-1][y];
-		}
-		else return null;
+
+	/**
+	 * Methode pour trouver une salle
+	 * 
+	 * @param donjon
+	 * @param x
+	 * @param y
+	 * @param choix
+	 * @return
+	 */
+	public static Room findRoomAdj(Donjon donjon, int x, int y, String choix) {
+		if (choix == "N") {
+			return donjon.getMaze()[x][y - 1];
+		} else if (choix == "E") {
+			return donjon.getMaze()[x + 1][y];
+		} else if (choix == "S") {
+			return donjon.getMaze()[x][y + 1];
+		} else if (choix == "W") {
+			return donjon.getMaze()[x - 1][y];
+		} else
+			return null;
 	}
+
+	/**
+	 * Methode qui confirme si le joueur a perdu la partie
+	 * 
+	 * @param didier
+	 * @return
+	 */
+
+	public static int gameIsLost(Player didier) {
+		if (didier.getHealthPoint() <= 0) {
+			System.out.println("You are dead! GAME OVER");
+			return -1;
+		}
+		return 0;
+
+	}
+
 }

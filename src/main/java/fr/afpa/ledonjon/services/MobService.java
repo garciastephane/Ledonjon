@@ -21,7 +21,7 @@ public class MobService {
 	}
 
 	/**
-	 * Methode qui permets � un mob d'attaquer un player
+	 * Methode qui permets a un mob d'attaquer un player
 	 * 
 	 * @param attacker
 	 * @param defender
