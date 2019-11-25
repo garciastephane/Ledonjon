@@ -27,6 +27,7 @@ public class Donjon {
 		}
 		maze[0][0]=new Start();
 		maze[x-1][y-1]=new End();
+		
 	}
 
 }

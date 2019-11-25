@@ -5,7 +5,6 @@ import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.StrengthPotion;
 
-import java.security.KeyStore.Entry;
 
 import fr.afpa.ledonjon.entites.Character;
 import fr.afpa.ledonjon.entites.GoldPouch;

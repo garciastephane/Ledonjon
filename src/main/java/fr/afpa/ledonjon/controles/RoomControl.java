@@ -27,6 +27,7 @@ public class RoomControl {
 				count++;
 			}
 		}
+
 		return count;
 	}
 }

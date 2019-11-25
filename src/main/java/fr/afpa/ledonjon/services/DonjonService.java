@@ -10,6 +10,15 @@ import fr.afpa.ledonjon.entites.Room;
 
 public class DonjonService {
 
+	
+	
+	
+	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY) {
+		DonjonService.generateMaze(donjon, tailleX / 2, tailleY / 2);
+		PlayerService.CreatePlayer(donjon.getMaze()[0][0]);
+		DonjonService.generateMob(donjon, tailleX, tailleY);
+		DonjonService.generateItem(donjon, tailleX, tailleY);
+	}
 	/**
 	 * Methode qui permets de configurer le parametre X sur la map
 	 * 
@@ -138,28 +147,18 @@ public class DonjonService {
 		}
 	}
 
-	/**
-	 * Methode pour trouver une salle
-	 * 
-	 * @param donjon
-	 * @param x
-	 * @param y
-	 * @param choix
-	 * @return
-	 */
-	public static Room findRoomAdj(Donjon donjon, int x, int y, String choix) {
-		if (choix == "N") {
-			return donjon.getMaze()[x][y - 1];
-		} else if (choix == "E") {
-			return donjon.getMaze()[x + 1][y];
-		} else if (choix == "S") {
+	public static Room findRoomAdj(Donjon donjon, int x, int y, char choix) {
+		if (choix == 'N') {
+			return donjon.getMaze()[x-1][y];
+		} else if (choix == 'E') {
 			return donjon.getMaze()[x][y + 1];
-		} else if (choix == "W") {
-			return donjon.getMaze()[x - 1][y];
+		} else if (choix == 'S') {
+			return donjon.getMaze()[x + 1][y];
+		} else if (choix == 'W') {
+			return donjon.getMaze()[x][y - 1];
 		} else
 			return null;
 	}
-
 	/**
 	 * Methode qui confirme si le joueur a perdu la partie
 	 * 
@@ -173,7 +172,6 @@ public class DonjonService {
 			return -1;
 		}
 		return 0;
-
 	}
 
 }

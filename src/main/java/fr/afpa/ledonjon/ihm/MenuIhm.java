@@ -9,9 +9,7 @@ public class MenuIhm {
 	 * Methode qui permets d afficher le menu initial au joueur
 	 */
 
-	public static void DisplayPlayerMenu() {
-		Room room = null;
-
+	public static void DisplayPlayerMenu(Room room ) {
 		System.out.println("*************MENU*************");
 
 		System.out.println("\n What do you want to do?\n");
