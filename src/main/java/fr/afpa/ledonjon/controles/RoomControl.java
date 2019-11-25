@@ -1,6 +1,7 @@
 package fr.afpa.ledonjon.controles;
 
 import fr.afpa.ledonjon.entites.End;
+import fr.afpa.ledonjon.entites.Item;
 import fr.afpa.ledonjon.entites.Mob;
 import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.Start;
@@ -26,6 +27,15 @@ public class RoomControl {
 			if (mob.isAlive()) {
 				count++;
 			}
+		}
+
+		return count;
+	}
+	
+	public static int numbItem(Room room) {
+		int count = 0;
+		for (@SuppressWarnings("unused") Item item : room.getItems()) {
+				count++;
 		}
 
 		return count;

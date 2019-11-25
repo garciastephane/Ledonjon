@@ -65,20 +65,20 @@ public class DonjonIhm {
 					} else {
 						System.out.print(" ");
 					}
-						if (donjon.getMaze()[j][i].getMobs().isEmpty()) {
+						if (donjon.getMaze()[i][j].getMobs().isEmpty()) {
 							System.out.print("  ");
 						} else {
-							System.out.print(donjon.getMaze()[j][i].getMobs().size() + "M");
+							System.out.print(donjon.getMaze()[i][j].getMobs().size() + "M");
 						}
 						if (donjon.getMaze()[i][j].getDidier() != null) {
 							System.out.print("P");
 						} else {
 							System.out.print(" ");
 						}
-						if (donjon.getMaze()[j][i].getItems().isEmpty()) {
+						if (donjon.getMaze()[i][j].getItems().isEmpty()) {
 							System.out.print("  ");
 						} else {
-							System.out.print(donjon.getMaze()[j][i].getItems().size() + "O");
+							System.out.print(donjon.getMaze()[i][j].getItems().size() + "O");
 						}
 				}
 			}
@@ -141,7 +141,4 @@ public class DonjonIhm {
 		System.out.println("+");
 	}
 
-	public static void AppliChoice(String choix) {
-
-	}
 }

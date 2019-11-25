@@ -15,7 +15,7 @@ public class PlayerIhm {
 	 * 
 	 * @param donjon
 	 */
-	public void LookAround(Room room) {
+	public static void LookAround(Room room) {
 		System.out.println("Player\n   HP       : " + room.getDidier().getHealthPoint() + "\n   Strength : "
 				+ room.getDidier().getStrength() + "\n   Gold     : " + room.getDidier().getGold());
 		int killcount = 0;

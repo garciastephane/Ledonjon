@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Scanner;
 
 import fr.afpa.ledonjon.entites.Donjon;
-import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
 
 public class DonjonService {
@@ -14,10 +13,12 @@ public class DonjonService {
 	
 	
 	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY) {
-		DonjonService.generateMaze(donjon, tailleX / 2, tailleY / 2);
+		generateMaze(donjon, tailleX / 2, tailleY / 2);
+		GenerateWall(donjon);
 		PlayerService.CreatePlayer(donjon.getMaze()[0][0]);
-		DonjonService.generateMob(donjon, tailleX, tailleY);
-		DonjonService.generateItem(donjon, tailleX, tailleY);
+		generateMob(donjon, tailleX, tailleY);
+		generateItem(donjon, tailleX, tailleY);
+		
 	}
 	/**
 	 * Methode qui permets de configurer le parametre X sur la map
@@ -149,29 +150,55 @@ public class DonjonService {
 
 	public static Room findRoomAdj(Donjon donjon, int x, int y, char choix) {
 		if (choix == 'N') {
-			return donjon.getMaze()[x-1][y];
+			return donjon.getMaze()[y - 1][x];
 		} else if (choix == 'E') {
-			return donjon.getMaze()[x][y + 1];
+			return donjon.getMaze()[y][x + 1];
 		} else if (choix == 'S') {
-			return donjon.getMaze()[x + 1][y];
+			return donjon.getMaze()[y + 1][x];
 		} else if (choix == 'W') {
-			return donjon.getMaze()[x][y - 1];
+			return donjon.getMaze()[y][x - 1];
 		} else
 			return null;
 	}
-	/**
-	 * Methode qui confirme si le joueur a perdu la partie
-	 * 
-	 * @param didier
-	 * @return
-	 */
-
-	public static int gameIsLost(Player didier) {
-		if (didier.getHealthPoint() <= 0) {
-			System.out.println("You are dead! GAME OVER");
-			return -1;
+	
+	public static void GenerateWall(Donjon donjon) {
+		for (int j = 1; j < donjon.getX(); j++) {
+			if ((donjon.getMaze()[j][0].getBit() & 8) == 0 ) {
+				donjon.getMaze()[j][0].setWest(false);
+				donjon.getMaze()[j-1][0].setEst(false);
+			}else {
+				donjon.getMaze()[j][0].setWest(true);
+				donjon.getMaze()[j-1][0].setEst(true);
+			}
 		}
-		return 0;
+		for (int i = 1; i < donjon.getY(); i++) {
+			// draw the north edge
+			for (int j = 0; j < donjon.getX(); j++) {
+				if ((donjon.getMaze()[j][i].getBit() & 1) == 0 ) {
+					donjon.getMaze()[j][i].setNorth(false);
+					donjon.getMaze()[j][i-1].setSouth(false);
+				}else {
+					donjon.getMaze()[j][i].setNorth(true);
+					donjon.getMaze()[j][i-1].setSouth(true);
+				}
+			}
+			// draw the west edge
+			
+			for (int j = 1; j < donjon.getX(); j++) {
+				if ((donjon.getMaze()[j][i].getBit() & 8) == 0 ) {
+					donjon.getMaze()[j][i].setWest(false);
+					donjon.getMaze()[j-1][i].setEst(false);
+				}else {
+					donjon.getMaze()[j][i].setWest(true);
+					donjon.getMaze()[j-1][i].setEst(true);
+				}
+			}
+			donjon.getMaze()[donjon.getY() - 1][i].setWest(false);
+		}
+		// draw the bottom line
+		for (int j = 0; j < donjon.getX(); j++) {
+			donjon.getMaze()[j][donjon.getX() - 1].setSouth(false);
+		}
 	}
 
 }

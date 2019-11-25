@@ -19,14 +19,16 @@ public class Gameplay {
 		Scanner sc = new Scanner(System.in);
 		int tailleX = 10;
 		int tailleY = 10;
+		
 		Donjon donjon = new Donjon(tailleX, tailleY);
 		DonjonService.DonjonContainGenerator(donjon,tailleX,tailleY);
 		int xPlayer = 0;
 		int yPlayer = 0;
 		int win = 0;
 		MenuIhm.DisplayTitle();
+		
 		do {
-			DonjonIhm.DisplayFullDonjon(donjon);
+			DonjonIhm.DisplayPlayerInDonjon(donjon);
 			MenuIhm.DisplayPlayerMenu(donjon.getMaze()[xPlayer][yPlayer]);
 			char choix = '0';
 			try {
@@ -36,9 +38,9 @@ public class Gameplay {
 			}
 			
 			if (choix == 'E'||choix == 'W') {
-				yPlayer = MenuService.Choix(choix, donjon, xPlayer, yPlayer);
+				xPlayer = MenuService.Choix(choix, donjon, yPlayer, xPlayer);
 			}else if (choix == 'N'||choix == 'S') {
-				xPlayer = MenuService.Choix(choix, donjon, xPlayer, yPlayer);
+				yPlayer = MenuService.Choix(choix, donjon, yPlayer, xPlayer);
 			} else {
 				win = MenuService.Choix(choix, donjon, xPlayer, yPlayer);
 			}

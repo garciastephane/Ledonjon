@@ -18,10 +18,14 @@ public class MenuIhm {
 		if (RoomControl.numbAliveMob(room) > 0) {
 			System.out.println("Attack");
 		} else {
-			System.out.println("Move North");
-			System.out.println("Move Est");
-			System.out.println("Move West");
-			System.out.println("Move South");
+			if (RoomControl.numbItem(room) > 0) {
+				System.out.println("Use Item");
+			} 
+			if (room.isNorth()) System.out.println("Move North");
+			if (room.isEst()) System.out.println("Move Est");
+			if (room.isSouth())System.out.println("Move South");
+			if (room.isWest())System.out.println("Move West");
+			
 		}
 	}
 
