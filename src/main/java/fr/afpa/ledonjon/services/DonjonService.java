@@ -9,17 +9,15 @@ import fr.afpa.ledonjon.entites.Room;
 
 public class DonjonService {
 
-	
-	
-	
 	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY) {
 		generateMaze(donjon, tailleX / 2, tailleY / 2);
 		GenerateWall(donjon);
 		PlayerService.CreatePlayer(donjon.getMaze()[0][0]);
 		generateMob(donjon, tailleX, tailleY);
 		generateItem(donjon, tailleX, tailleY);
-		
+
 	}
+
 	/**
 	 * Methode qui permets de configurer le parametre X sur la map
 	 * 
@@ -160,46 +158,29 @@ public class DonjonService {
 		} else
 			return null;
 	}
-	
-	public static void GenerateWall(Donjon donjon) {
 
-		for (int j = 1; j < donjon.getX(); j++) {
-			if ((donjon.getMaze()[j][0].getBit() & 8) == 0 ) {
-				donjon.getMaze()[j][0].setWest(false);
-				donjon.getMaze()[j-1][0].setEst(false);
-			}else {
-				donjon.getMaze()[j][0].setWest(true);
-				donjon.getMaze()[j-1][0].setEst(true);
-			}
-		}
-		for (int i = 1; i < donjon.getY(); i++) {
+	public static void GenerateWall(Donjon donjon) {
+		for (int i = 0; i < donjon.getX(); i++) {
 			// draw the north edge
-			for (int j = 0; j < donjon.getX(); j++) {
-				if ((donjon.getMaze()[j][i].getBit() & 1) == 0 ) {
-					donjon.getMaze()[j][i].setNorth(false);
-					donjon.getMaze()[j][i-1].setSouth(false);
-				}else {
-					donjon.getMaze()[j][i].setNorth(true);
-					donjon.getMaze()[j][i-1].setSouth(true);
-				}
+			for (int j = 1; j < donjon.getY(); j++) {
+				if (!((donjon.getMaze()[i][j].getBit() & 1) == 0)) {
+					donjon.getMaze()[i][j].setWest(true);
+					donjon.getMaze()[i][j-1].setEst(true);
+				} 
 			}
 			// draw the west edge
-			
-			for (int j = 1; j < donjon.getX(); j++) {
-				if ((donjon.getMaze()[j][i].getBit() & 8) == 0 ) {
-					donjon.getMaze()[j][i].setWest(false);
-					donjon.getMaze()[j-1][i].setEst(false);
-				}else {
-					donjon.getMaze()[j][i].setWest(true);
-					donjon.getMaze()[j-1][i].setEst(true);
-				}
+		}
+		for (int i = 1; i < donjon.getX() ; i++) {
+			for (int j = 0; j < donjon.getY(); j++) {
+				if (!((donjon.getMaze()[i][j].getBit() & 8) == 0)) {
+					donjon.getMaze()[i][j].setNorth(true);
+					donjon.getMaze()[i-1][j].setSouth(true);
+				} 
 			}
-			donjon.getMaze()[donjon.getX() - 1][i].setWest(false);
 		}
+		
 		// draw the bottom line
-		for (int j = 0; j < donjon.getX(); j++) {
-			donjon.getMaze()[j][donjon.getX() - 1].setSouth(false);
-		}
+		
 	}
 
 }

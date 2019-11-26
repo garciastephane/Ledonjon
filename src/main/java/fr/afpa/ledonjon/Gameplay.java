@@ -19,36 +19,31 @@ public class Gameplay {
 		Scanner sc = new Scanner(System.in);
 		int tailleX = 3;
 		int tailleY = 4;
-		
+
 		Donjon donjon = new Donjon(tailleX, tailleY);
-		DonjonService.DonjonContainGenerator(donjon,tailleX,tailleY);
+		DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY);
 		int xPlayer = 0;
 		int yPlayer = 0;
 		int win = 0;
 		MenuIhm.DisplayTitle();
-		
-		
-		
-		DonjonIhm.DisplayDonjon(donjon);
-		
-		
+
 		do {
 			DonjonIhm.DisplayDonjon(donjon);
 			DonjonIhm.DisplayFullDonjon(donjon);
-			MenuIhm.DisplayPlayerMenu(donjon.getMaze()[yPlayer][xPlayer]);
+			MenuIhm.DisplayPlayerMenu(donjon.getMaze()[xPlayer][yPlayer]);
 			char choix = '0';
 			try {
 				choix = sc.nextLine().toUpperCase().charAt(0);
-			}catch (Exception e) {
-				
+			} catch (Exception e) {
+
 			}
-			
-			if (choix == 'E'||choix == 'W') {
-				xPlayer = MenuService.Choix(choix, donjon, yPlayer, xPlayer , sc);
-			}else if (choix == 'N'||choix == 'S') {
-				yPlayer = MenuService.Choix(choix, donjon, yPlayer, xPlayer , sc);
+
+			if (choix == 'E' || choix == 'W') {
+				yPlayer = MenuService.Choix(choix, donjon, xPlayer, yPlayer, sc);
+			} else if (choix == 'N' || choix == 'S') {
+				xPlayer = MenuService.Choix(choix, donjon, xPlayer, yPlayer, sc);
 			} else {
-				win = MenuService.Choix(choix, donjon, xPlayer, yPlayer , sc);
+				win = MenuService.Choix(choix, donjon, xPlayer, yPlayer, sc);
 			}
 		} while (win != -1);
 		sc.close();
