@@ -27,6 +27,11 @@ public class Gameplay {
 		int win = 0;
 		MenuIhm.DisplayTitle();
 		
+		
+		
+		DonjonIhm.DisplayDonjon(donjon);
+		
+		
 		do {
 			DonjonIhm.DisplayDonjon(donjon);
 			DonjonIhm.DisplayFullDonjon(donjon);
