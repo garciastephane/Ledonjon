@@ -90,7 +90,6 @@ public class PlayerService {
 	}
 	
 	public static void Move(Room room,Room roomS) {
-	
 		roomS.setDidier(room.getDidier());
 		room.setDidier(null);
 		}

@@ -150,18 +150,19 @@ public class DonjonService {
 
 	public static Room findRoomAdj(Donjon donjon, int x, int y, char choix) {
 		if (choix == 'N') {
-			return donjon.getMaze()[y - 1][x];
+			return donjon.getMaze()[x - 1][y];
 		} else if (choix == 'E') {
-			return donjon.getMaze()[y][x + 1];
+			return donjon.getMaze()[x][y + 1];
 		} else if (choix == 'S') {
-			return donjon.getMaze()[y + 1][x];
+			return donjon.getMaze()[x + 1][y];
 		} else if (choix == 'W') {
-			return donjon.getMaze()[y][x - 1];
+			return donjon.getMaze()[x][y - 1];
 		} else
 			return null;
 	}
 	
 	public static void GenerateWall(Donjon donjon) {
+
 		for (int j = 1; j < donjon.getX(); j++) {
 			if ((donjon.getMaze()[j][0].getBit() & 8) == 0 ) {
 				donjon.getMaze()[j][0].setWest(false);
@@ -193,7 +194,7 @@ public class DonjonService {
 					donjon.getMaze()[j-1][i].setEst(true);
 				}
 			}
-			donjon.getMaze()[donjon.getY() - 1][i].setWest(false);
+			donjon.getMaze()[donjon.getX() - 1][i].setWest(false);
 		}
 		// draw the bottom line
 		for (int j = 0; j < donjon.getX(); j++) {
