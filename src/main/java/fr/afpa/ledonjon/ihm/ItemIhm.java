@@ -1,14 +1,26 @@
 package fr.afpa.ledonjon.ihm;
 
+/**
+ * Methode qui permets de gagner des points de vie au personnage
+ * @author horass
+ *
+ */
 public class ItemIhm {
 	public static void HealDisplay(int receavedHp) {
 		System.out.println("you drink the sweet liquid and gain " + receavedHp + "HP !");
 	}
 
+	/**
+	 * Methode qui permets de gagner de la force au personnage
+	 */
 	public static void GainStrengthDisplay() {
 		System.out.println("you drink the bitter bavrage and feel stronger");
 	}
 
+	/**
+	 * Methode qui permets de donner de l or au personnage
+	 * @param receavedGold
+	 */
 	public static void LootGoldDisplay(int receavedGold) {
 		if (receavedGold == 1) {
 			System.out.println("you get one pityful coin");
@@ -19,6 +31,10 @@ public class ItemIhm {
 		}
 	}
 
+	/**
+	 * Methode aleatoire qui permets de recevoir une recompense
+	 * @param d100
+	 */
 	public static void RewardDisplay(int d100) {
 		if (d100 > 55 && d100 <= 60) {
 			System.out.println("Nothing happen....Ah!!..no nothing.");

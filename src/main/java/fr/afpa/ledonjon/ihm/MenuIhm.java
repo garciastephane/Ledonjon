@@ -28,6 +28,10 @@ public class MenuIhm {
 			
 		}
 	}
+	
+	/**
+	 * Methode qui affiche le nom du jeu
+	 */
 
 	public static void DisplayTitle() {
 		System.out.println("" + "THE SACRED LAIR OF THE ANCIENT ELDER MAGIC SORCEROR DRAGON LORD OF THE ULTIMATE \r\n"

@@ -9,7 +9,7 @@ import fr.afpa.ledonjon.services.DonjonService;
 import fr.afpa.ledonjon.services.MenuService;
 
 /**
- * Creer un donjon
+ * Methode qui permets de creer un donjon
  *
  */
 public class Gameplay {

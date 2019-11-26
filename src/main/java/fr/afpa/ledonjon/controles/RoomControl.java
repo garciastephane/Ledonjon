@@ -20,6 +20,12 @@ public class RoomControl {
 			return false;
 		return true;
 	}
+	
+	/**
+	 * Methode qui permets de compter le nombre de mobs vivants dans une salle
+	 * @param room
+	 * @return
+	 */
 
 	public static int numbAliveMob(Room room) {
 		int count = 0;
@@ -32,6 +38,11 @@ public class RoomControl {
 		return count;
 	}
 	
+	/**
+	 * Methode qui permets de compter le nombre de items presents dans une salle
+	 * @param room
+	 * @return
+	 */
 	public static int numbItem(Room room) {
 		int count = 0;
 		for (@SuppressWarnings("unused") Item item : room.getItems()) {

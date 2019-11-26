@@ -146,6 +146,14 @@ public class DonjonService {
 		}
 	}
 
+	/**
+	 * Methode qui permets de trouver une salle specifique
+	 * @param donjon
+	 * @param x
+	 * @param y
+	 * @param choix
+	 * @return
+	 */
 	public static Room findRoomAdj(Donjon donjon, int x, int y, char choix) {
 		if (choix == 'N') {
 			return donjon.getMaze()[x - 1][y];
@@ -159,6 +167,10 @@ public class DonjonService {
 			return null;
 	}
 
+	/**
+	 * Methode qui permets de generer un mur
+	 * @param donjon
+	 */
 	public static void GenerateWall(Donjon donjon) {
 		for (int i = 0; i < donjon.getX(); i++) {
 			// draw the north edge

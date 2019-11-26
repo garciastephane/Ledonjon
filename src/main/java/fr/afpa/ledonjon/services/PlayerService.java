@@ -89,6 +89,12 @@ public class PlayerService {
 		didier.setGold(didier.getGold() + receavedGold);
 	}
 	
+	/**
+	 * Methode qui permets de se deplacer 
+	 * @param room
+	 * @param roomS
+	 */
+	
 	public static void Move(Room room,Room roomS) {
 		roomS.setDidier(room.getDidier());
 		room.setDidier(null);

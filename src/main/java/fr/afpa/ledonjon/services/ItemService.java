@@ -124,7 +124,7 @@ public class ItemService {
 	}
 
 	/**
-	 * Methode pour retirer de l or a un personnaje
+	 * Methode pour retirer un item a un personnaje
 	 * @param room
 	 * @param item
 	 */

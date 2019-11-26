@@ -17,11 +17,21 @@ public class EndService {
 		ecritureScore(didier);
 	}
 
+	/**
+	 * Methode qui permets de sauvergarder le score du joueur
+	 * @param didier
+	 */
 	public static void ecritureScore(Player didier) {
 		try{
 			Files.write(Paths.get("C:\\ENV\\Workspace\\ledonjon\\SauvegardeScore.txt"), ("nouveau score : "+didier.getGold()+" "+LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+"\n").getBytes(), StandardOpenOption.APPEND);}
 		catch (Exception e){ System.out.println("Erreur "+e);}
 	}
+	
+	/**
+	 * Methode qui permets de montrer les dix grands scores du jeu
+	 * @param didier
+	 * @return
+	 */
 	public static ArrayList showHigh(Player didier) {
 		ArrayList<Integer> meilleursScore = new ArrayList<Integer>(10);
 		int pluspetit=0;

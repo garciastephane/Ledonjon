@@ -38,6 +38,11 @@ public class DonjonIhm {
 		}
 		System.out.println("+");
 	}
+	
+	/**
+	 * Methode qui permets d'afficher le donjon complet(avec joueur/monstres/items)
+	 * @param donjon
+	 */
 
 	public static void DisplayFullDonjon(Donjon donjon) {
 		for (int j = 0; j < donjon.getX(); j++) {
@@ -93,6 +98,10 @@ public class DonjonIhm {
 		System.out.println("+");
 	}
 
+	/**
+	 * Methode qui permets d'afficher le donjon complet
+	 * @param donjon
+	 */
 	public static void DisplayFullDonjonV(Donjon donjon) {
 		for (int j = 0; j < donjon.getY(); j++) {
 			// draw the north edge
@@ -148,6 +157,11 @@ public class DonjonIhm {
 		System.out.println("+");
 
 	}
+	
+	/**
+	 * Methode qui permets d afficher le joueur dans le donjon
+	 * @param donjon
+	 */
 
 	public static void DisplayPlayerInDonjon(Donjon donjon) {
 		for (int i = 0; i < donjon.getY(); i++) {
