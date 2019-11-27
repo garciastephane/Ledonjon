@@ -17,8 +17,8 @@ public class Gameplay {
 //		Donjon donjon = new Donjon(DonjonService.configXMaze(), DonjonService.configYMaze());
 //		DonjonService.generateMaze(donjon, donjon.getX()/ 2, donjon.getY()/ 2);
 		Scanner sc = new Scanner(System.in);
-		int tailleX = 9;
-		int tailleY = 16;
+		int tailleX = 5;
+		int tailleY = 5;
 
 		Donjon donjon = new Donjon(tailleX, tailleY);
 		DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY);
