@@ -15,30 +15,71 @@ import fr.afpa.ledonjon.services.EndService;
  */
 public class Gameplay {
 	public static void main(String[] args) {
-		MenuIhm.MenuInit();
-		Scanner in = new Scanner(System.in);
-		String choix = in.nextLine();
-		switch (choix) {
-		case "1" : partieRapide();break;
-		case "2" : partieConfig();break;
-		case "3" : EndService.showHigh(null);break;
-		default : break;
-		}
-			
-		}	
-		public static void partieRapide() {
-//		Donjon donjon = new Donjon(DonjonService.configXMaze(), DonjonService.configYMaze());
-//		DonjonService.generateMaze(donjon, donjon.getX()/ 2, donjon.getY()/ 2);
 		Scanner sc = new Scanner(System.in);
+		MenuIhm.DisplayTitle();
+		String choixDiff = null; 
 		int tailleX = 8;
 		int tailleY = 8;
+		Donjon donjon = null;
+		do {
+			MenuIhm.MenuInit();
+			choixDiff = sc.nextLine();
+			switch (choixDiff) {
+			case "1":
+				donjon = new Donjon(tailleX, tailleY);
+				DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "2");
+				break;
+			case "2":
+				System.out.println("Choose the weight");
+				try {
+					tailleY = sc.nextInt();
+					sc.nextLine();
+				} catch (Exception e) {
+					sc.nextLine();
+					System.out.println("invalid");
+				}
+				System.out.println("Choose the height");
+				try {
+					tailleX = sc.nextInt();
+					sc.nextLine();
+				} catch (Exception e) {
+					sc.nextLine();
+					System.out.println("invalid");
+				}
+				donjon = new Donjon(tailleX, tailleY);
+				do {
+					
+					MenuIhm.MenuDifficulte();
+					choixDiff = sc.nextLine();
+					switch (choixDiff) {
+					case "1":
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "1");
+						break;
+					case "2":
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "2");
+						break;
+					case "3":
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "3");
+						break;
+					default:
+						choixDiff = null;
+						break;
+					}
+				} while (choixDiff == null);
+				break;
+			case "3":
+				EndService.showHigh(null);
+				break;
+			default:
+				choixDiff = null;
+				break;
+			}
+		} while (choixDiff == null);
 
-		Donjon donjon = new Donjon(tailleX, tailleY);
-		DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY);
 		int xPlayer = 0;
 		int yPlayer = 0;
 		int win = 0;
-		MenuIhm.DisplayTitle();
+		
 
 		do {
 			DonjonIhm.DisplayPlayerInDonjon(donjon);
@@ -57,58 +98,10 @@ public class Gameplay {
 			} else {
 				win = MenuIhm.Choix(choix, donjon, xPlayer, yPlayer, sc);
 			}
-			
+
 		} while (win != -1);
 		DonjonControl.EndGame(donjon.getMaze()[xPlayer][yPlayer].getDidier(), donjon.getMaze()[xPlayer][yPlayer]);
 		sc.close();
 	}
-		
-		public static void partieConfig() {
-//			Donjon donjon = new Donjon(DonjonService.configXMaze(), DonjonService.configYMaze());
-//			DonjonService.generateMaze(donjon, donjon.getX()/ 2, donjon.getY()/ 2);
-			Scanner sc = new Scanner(System.in);
-			//int tailleX = 8;
-			//int tailleY = 8;
-			System.out.println("hauteur du labyrinthe ?");
-			int tailleX = sc.nextInt();
-			sc.nextLine();
-			System.out.println("largueur du labyrinthe ?");
-			int tailleY = sc.nextInt();
-			sc.nextLine();
-//			MenuIhm.MenuDifficulte();
-//			String choix2 = sc.nextLine();
-//			switch (choix2) {
-//			case "1" : 
-//			}
-			Donjon donjon = new Donjon(tailleX, tailleY);
-			DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY);
-			int xPlayer = 0;
-			int yPlayer = 0;
-			int win = 0;
-			MenuIhm.DisplayTitle();
-
-			do {
-				DonjonIhm.DisplayPlayerInDonjon(donjon);
-				MenuIhm.DisplayPlayerMenu(donjon.getMaze()[xPlayer][yPlayer]);
-				char choix = '0';
-				try {
-					choix = sc.nextLine().toUpperCase().charAt(0);
-				} catch (Exception e) {
-
-				}
-
-				if (choix == 'E' || choix == 'W') {
-					yPlayer = MenuIhm.Choix(choix, donjon, xPlayer, yPlayer, sc);
-				} else if (choix == 'N' || choix == 'S') {
-					xPlayer = MenuIhm.Choix(choix, donjon, xPlayer, yPlayer, sc);
-				} else {
-					win = MenuIhm.Choix(choix, donjon, xPlayer, yPlayer, sc);
-				}
-				
-			} while (win != -1);
-			DonjonControl.EndGame(donjon.getMaze()[xPlayer][yPlayer].getDidier(), donjon.getMaze()[xPlayer][yPlayer]);
-			sc.close();
-		}
-		
 
 }

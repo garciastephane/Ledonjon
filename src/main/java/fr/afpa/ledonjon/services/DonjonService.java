@@ -5,23 +5,23 @@ import java.util.Collections;
 import java.util.Scanner;
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.Room;
-import fr.afpa.ledonjon.ihm.MenuIhm;
 
 public class DonjonService {
-	
+
 	/**
 	 * Methode qui permets de generer un donjon avec un player
+	 * 
 	 * @param name
 	 * @param donjon
 	 * @param tailleX
 	 * @param tailleY
 	 */
 
-	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY) {
+	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY, String diff) {
 		generateMaze(donjon, tailleX / 2, tailleY / 2);
 		GenerateWall(donjon);
-		PlayerService.CreatePlayer( donjon.getMaze()[0][0]);
-		generateMob(donjon, tailleX, tailleY);
+		PlayerService.CreatePlayer(donjon.getMaze()[0][0]);
+		generateMob(donjon, tailleX, tailleY, diff);
 		generateItem(donjon, tailleX, tailleY);
 
 	}
@@ -115,17 +115,21 @@ public class DonjonService {
 	 * @param tailleX
 	 * @return
 	 */
-	public static boolean generateMob(Donjon donjon, int tailleX, int tailleY) {
-		Scanner sc = new Scanner(System.in);
-		int numMob=0;
-		MenuIhm.MenuDifficulte();
-		String choix2 = sc.nextLine();
-		switch (choix2) {
-		case "1" : numMob = UtilService.RamdomNumberGenerator(tailleX/2) + tailleY/2;break;
-		case "3" : numMob = UtilService.RamdomNumberGenerator(tailleX) + tailleY*2;break;
-		default : numMob = UtilService.RamdomNumberGenerator(tailleX) + tailleY;break;
+	public static boolean generateMob(Donjon donjon, int tailleX, int tailleY, String diff) {
+		int numMob = 0;
+		switch (diff) {
+		case "1":
+			numMob = UtilService.RamdomNumberGenerator(tailleY / 2) + tailleX / 2;
+			break;
+		case "2":
+			numMob = UtilService.RamdomNumberGenerator(tailleY) + tailleX;
+			break;
+		case "3":
+			numMob = UtilService.RamdomNumberGenerator(tailleY) + tailleX * 2;
+			break;
+		default:
+			break;
 		}
-		//numMob = UtilService.RamdomNumberGenerator(tailleX) + tailleY;
 		for (int i = 0; i < numMob; i++) {
 			MobService.CreateMob(donjon, tailleX, tailleY);
 		}
@@ -165,6 +169,7 @@ public class DonjonService {
 
 	/**
 	 * Methode qui permets de trouver une salle specifique
+	 * 
 	 * @param donjon
 	 * @param x
 	 * @param y
@@ -186,33 +191,25 @@ public class DonjonService {
 
 	/**
 	 * Methode qui permets de generer un mur
+	 * 
 	 * @param donjon
 	 */
 	public static void GenerateWall(Donjon donjon) {
 		for (int i = 0; i < donjon.getX(); i++) {
-			// draw the north edge
 			for (int j = 1; j < donjon.getY(); j++) {
 				if (!((donjon.getMaze()[i][j].getBit() & 1) == 0)) {
 					donjon.getMaze()[i][j].setWest(true);
-					donjon.getMaze()[i][j-1].setEst(true);
-				} 
+					donjon.getMaze()[i][j - 1].setEst(true);
+				}
 			}
-			// draw the west edge
 		}
-		for (int i = 1; i < donjon.getX() ; i++) {
+		for (int i = 1; i < donjon.getX(); i++) {
 			for (int j = 0; j < donjon.getY(); j++) {
 				if (!((donjon.getMaze()[i][j].getBit() & 8) == 0)) {
 					donjon.getMaze()[i][j].setNorth(true);
-					donjon.getMaze()[i-1][j].setSouth(true);
-				} 
+					donjon.getMaze()[i - 1][j].setSouth(true);
+				}
 			}
 		}
-		
-		// draw the bottom line
-		
 	}
-
-	
-
-
 }

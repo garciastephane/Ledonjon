@@ -19,7 +19,8 @@ public class PlayerService {
 	 * @return
 	 */
 	public static void CreatePlayer(Room room) {
-		 room.setDidier(new Player(21 + UtilService.RamdomNumberGenerator(5), 4 + UtilService.RamdomNumberGenerator(3), 0, true));
+		room.setDidier(new Player(21 + UtilService.RamdomNumberGenerator(5), 4 + UtilService.RamdomNumberGenerator(3),
+				0, true));
 	}
 
 	/**
@@ -45,7 +46,7 @@ public class PlayerService {
 	}
 
 	/**
-	 * Methode qui permets a un personnaje d'attaquer un mob
+	 * Methode qui permets a un personnaGe d'attaquer un mob
 	 * 
 	 * @param attacker
 	 * @param defender
@@ -93,14 +94,15 @@ public class PlayerService {
 	public static void WinGold(Player didier, int receavedGold) {
 		didier.setGold(didier.getGold() + receavedGold);
 	}
-	
+
 	/**
-	 * Methode qui permets de se deplacer 
+	 * Methode qui permets de se deplacer
+	 * 
 	 * @param room
 	 * @param roomS
 	 */
-	
-	public static void Move(Room room,Room roomS) {
+
+	public static void Move(Room room, Room roomS) {
 		roomS.setDidier(room.getDidier());
 		room.setDidier(null);
 	}

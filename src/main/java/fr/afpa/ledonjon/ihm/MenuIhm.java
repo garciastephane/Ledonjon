@@ -14,11 +14,12 @@ import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.StrengthPotion;
 import fr.afpa.ledonjon.services.DonjonService;
-import fr.afpa.ledonjon.services.EndService;
 import fr.afpa.ledonjon.services.PlayerService;
 
 public class MenuIhm {
 
+	
+	
 	/**
 	 * Methode qui permets d afficher le menu initial au joueur
 	 */
@@ -50,17 +51,15 @@ public class MenuIhm {
 	}
 	
 	public static void MenuInit() {
-		System.out.println("1-Partie rapide");
-		System.out.println("2-Configuration particulière");
-		System.out.println("3-Afficher les meilleurs scores");
-		System.out.println("autre-quitter");
+		System.out.println("1-Quick PLay");
+		System.out.println("2-Choose difficulty");
+		System.out.println("3-Diplay High Score");
 		}
 	
 	public static void MenuDifficulte() {
 		System.out.println("1-Easy Mode");
 		System.out.println("2-Medium Mode");
 		System.out.println("3-Hard Mode");
-		System.out.println("Autre-Medium Mode");
 	}
 		
 	
@@ -211,5 +210,7 @@ public class MenuIhm {
 				+ "             POWERFUL GUARDIAN OF THE GREAT AND STRONG DONJON OF \r\n"
 				+ "             THE MISTIC HEROIC SECRET LEGEND OF THE FINAL QUEST \r\n\n");
 	}
+
+	
 
 }
