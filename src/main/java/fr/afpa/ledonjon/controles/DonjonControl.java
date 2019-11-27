@@ -3,6 +3,7 @@ package fr.afpa.ledonjon.controles;
 import fr.afpa.ledonjon.entites.End;
 import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
+import fr.afpa.ledonjon.services.EndService;
 
 public class DonjonControl {
 
@@ -19,6 +20,7 @@ public class DonjonControl {
 			System.out.println("You are dead! GAME OVER");
 		}else if (room instanceof End) {
 			System.out.println("Congratulation, you win!!!!");	
+			EndService.ecritureScore(didier);
 		}	
 	}
 }

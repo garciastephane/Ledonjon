@@ -5,6 +5,7 @@ import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.StrengthPotion;
+
 import fr.afpa.ledonjon.controles.CharacterControl;
 import fr.afpa.ledonjon.entites.Character;
 import fr.afpa.ledonjon.entites.GoldPouch;
@@ -18,9 +19,10 @@ public class PlayerService {
 	 * @param start
 	 * @return
 	 */
-	public static void CreatePlayer(Room room) {
-		room.setDidier(new Player(21 + UtilService.RamdomNumberGenerator(5), 4 + UtilService.RamdomNumberGenerator(3),
-				0, true));
+	public static void CreatePlayer(String name, Room room) {
+		room.setDidier(new Player(name, 21 + UtilService.RamdomNumberGenerator(5),
+				4 + UtilService.RamdomNumberGenerator(3), 0, true));
+
 	}
 
 	/**
@@ -106,5 +108,7 @@ public class PlayerService {
 		roomS.setDidier(room.getDidier());
 		room.setDidier(null);
 	}
+
+
 
 }

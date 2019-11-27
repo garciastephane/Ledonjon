@@ -6,6 +6,7 @@ import fr.afpa.ledonjon.controles.DonjonControl;
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.ihm.DonjonIhm;
 import fr.afpa.ledonjon.ihm.MenuIhm;
+import fr.afpa.ledonjon.ihm.PlayerIhm;
 import fr.afpa.ledonjon.services.DonjonService;
 import fr.afpa.ledonjon.services.EndService;
 
@@ -17,7 +18,8 @@ public class Gameplay {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		MenuIhm.DisplayTitle();
-		String choixDiff = null; 
+		String name = PlayerIhm.askName(sc);
+		String choixDiff = null;
 		int tailleX = 8;
 		int tailleY = 8;
 		Donjon donjon = null;
@@ -27,7 +29,7 @@ public class Gameplay {
 			switch (choixDiff) {
 			case "1":
 				donjon = new Donjon(tailleX, tailleY);
-				DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "2");
+				DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "2", name);
 				break;
 			case "2":
 				System.out.println("Choose the weight");
@@ -48,18 +50,18 @@ public class Gameplay {
 				}
 				donjon = new Donjon(tailleX, tailleY);
 				do {
-					
+
 					MenuIhm.MenuDifficulte();
 					choixDiff = sc.nextLine();
 					switch (choixDiff) {
 					case "1":
-						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "1");
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "1", name);
 						break;
 					case "2":
-						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "2");
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "2", name);
 						break;
 					case "3":
-						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "3");
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "3", name);
 						break;
 					default:
 						choixDiff = null;
@@ -75,11 +77,9 @@ public class Gameplay {
 				break;
 			}
 		} while (choixDiff == null);
-
 		int xPlayer = 0;
 		int yPlayer = 0;
 		int win = 0;
-		
 
 		do {
 			DonjonIhm.DisplayPlayerInDonjon(donjon);

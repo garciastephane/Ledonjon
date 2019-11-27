@@ -17,10 +17,11 @@ public class DonjonService {
 	 * @param tailleY
 	 */
 
-	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY, String diff) {
+
+	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY, String diff,String name) {
 		generateMaze(donjon, tailleX / 2, tailleY / 2);
 		GenerateWall(donjon);
-		PlayerService.CreatePlayer(donjon.getMaze()[0][0]);
+		PlayerService.CreatePlayer(name ,donjon.getMaze()[0][0]);
 		generateMob(donjon, tailleX, tailleY, diff);
 		generateItem(donjon, tailleX, tailleY);
 

@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import fr.afpa.ledonjon.entites.Player;
 
 public class EndService {
-	public static void main(String[] args) {
-		Player didier = new Player(0, 10, 10, true);
-		ecritureScore(didier);
-	}
+//	public static void main(String[] args) {
+//		Player didier = new Player(0, 10, 10, true);
+//		ecritureScore(didier);
+//	}
 
 	/**
 	 * Methode qui permets de sauvergarder le score du joueur
@@ -23,7 +23,7 @@ public class EndService {
 	public static void ecritureScore(Player didier) {
 		try {
 			Files.write(Paths.get("C:\\ENV\\Workspace\\Donjon\\SauvegardeScore.txt"),
-					("nouveau score : " + didier.getGold() + " "
+					("nouveau score : "+ didier.getName() +" " + didier.getGold() + " gold ! Le"
 							+ LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + "\n").getBytes(),
 					StandardOpenOption.APPEND);
 		} catch (Exception e) {

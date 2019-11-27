@@ -1,5 +1,8 @@
 package fr.afpa.ledonjon.ihm;
 
+import java.util.Scanner;
+
+import fr.afpa.ledonjon.controles.PlayerControl;
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
@@ -12,7 +15,19 @@ import fr.afpa.ledonjon.entites.StrengthPotion;
 public class PlayerIhm {
 	String nm = null;
 
-
+		public static String askName(Scanner sc) {
+		System.out.println("What s your name : ");
+		String name = sc.next();
+		sc.nextLine();
+		do {
+			if (PlayerControl.validNamePlayer(name) == false) {
+				System.out.println("The name should include letters");
+				name = null;
+			}
+		} while (name == null);
+		return name;
+	}
+	
 	
 	/**
 	 * Methode qui permets de consulter la salle ou le joueur se situe

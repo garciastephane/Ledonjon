@@ -5,7 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Player extends Character{
+public class Player extends Character {
+	private String name;
+
 	/**
 	 * @param name
 	 * @param healthPoint
@@ -14,13 +16,9 @@ public class Player extends Character{
 	 * @param alive
 	 * @param room
 	 */
-	public Player(int healthPoint, int strength, int gold, boolean alive) {
+	public Player(String name, int healthPoint, int strength, int gold, boolean alive) {
 		super(healthPoint, strength, gold, alive);
+		this.name = name;
 	}
-	
 
-	
-	
-
-	
 }
