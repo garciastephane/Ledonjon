@@ -3,16 +3,23 @@ package fr.afpa.ledonjon.services;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
-
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.Room;
 
 public class DonjonService {
+	
+	/**
+	 * Methode qui permets de generer un donjon avec un player
+	 * @param name
+	 * @param donjon
+	 * @param tailleX
+	 * @param tailleY
+	 */
 
 	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY) {
 		generateMaze(donjon, tailleX / 2, tailleY / 2);
 		GenerateWall(donjon);
-		PlayerService.CreatePlayer(donjon.getMaze()[0][0]);
+		PlayerService.CreatePlayer( donjon.getMaze()[0][0]);
 		generateMob(donjon, tailleX, tailleY);
 		generateItem(donjon, tailleX, tailleY);
 
@@ -108,7 +115,7 @@ public class DonjonService {
 	 * @return
 	 */
 	public static boolean generateMob(Donjon donjon, int tailleX, int tailleY) {
-		int numMob = UtilService.RamdomNumberGenerator(6) + 10;
+		int numMob = UtilService.RamdomNumberGenerator(7) + 1;
 		for (int i = 0; i < numMob; i++) {
 			MobService.CreateMob(donjon, tailleX, tailleY);
 		}
@@ -122,7 +129,7 @@ public class DonjonService {
 	 */
 
 	public static void generateItem(Donjon donjon, int tailleX, int tailleY) {
-		int numItem = UtilService.RamdomNumberGenerator(7) + 8;
+		int numItem = UtilService.RamdomNumberGenerator(7) + 1;
 
 		for (int i = 0; i < numItem; i++) {
 			int typeItem = UtilService.RamdomNumberGenerator(4);

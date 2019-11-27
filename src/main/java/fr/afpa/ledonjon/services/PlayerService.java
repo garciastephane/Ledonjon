@@ -1,3 +1,4 @@
+
 package fr.afpa.ledonjon.services;
 
 import fr.afpa.ledonjon.entites.Player;
@@ -23,6 +24,7 @@ public class PlayerService {
 
 	/**
 	 * Methode qui permets d utiliser un objet
+	 * 
 	 * @param didier
 	 * @param room
 	 * @param item
@@ -63,6 +65,7 @@ public class PlayerService {
 
 	/**
 	 * Methode qui permets de gagner des points de vie
+	 * 
 	 * @param didier
 	 * @param receavedHp
 	 */
@@ -72,15 +75,17 @@ public class PlayerService {
 
 	/**
 	 * Methode qui permets de gagner de la force
+	 * 
 	 * @param didier
 	 * @param strengthGain
 	 */
 	public static void BeinStrongther(Player didier, int strengthGain) {
 		didier.setStrength(didier.getStrength() + strengthGain);
 	}
-	
+
 	/**
 	 * Methode qui permets de gagner des pieces d or
+	 * 
 	 * @param didier
 	 * @param receavedGold
 	 */
@@ -98,8 +103,6 @@ public class PlayerService {
 	public static void Move(Room room,Room roomS) {
 		roomS.setDidier(room.getDidier());
 		room.setDidier(null);
-		}
-	
-	
 	}
 
+}

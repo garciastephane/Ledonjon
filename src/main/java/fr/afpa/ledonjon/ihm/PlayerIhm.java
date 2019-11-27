@@ -10,7 +10,10 @@ import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.StrengthPotion;
 
 public class PlayerIhm {
+	String nm = null;
 
+
+	
 	/**
 	 * Methode qui permets de consulter la salle ou le joueur se situe
 	 * 

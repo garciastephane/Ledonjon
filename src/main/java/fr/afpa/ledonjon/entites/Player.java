@@ -1,8 +1,13 @@
 package fr.afpa.ledonjon.entites;
 
-public class Player extends Character{
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class Player extends Character{
 	/**
+	 * @param name
 	 * @param healthPoint
 	 * @param strength
 	 * @param gold
@@ -12,6 +17,7 @@ public class Player extends Character{
 	public Player(int healthPoint, int strength, int gold, boolean alive) {
 		super(healthPoint, strength, gold, alive);
 	}
+	
 
 	
 	
