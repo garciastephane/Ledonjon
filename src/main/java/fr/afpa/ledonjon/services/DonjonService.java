@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.Room;
+import fr.afpa.ledonjon.ihm.MenuIhm;
 
 public class DonjonService {
 	
@@ -115,7 +116,16 @@ public class DonjonService {
 	 * @return
 	 */
 	public static boolean generateMob(Donjon donjon, int tailleX, int tailleY) {
-		int numMob = UtilService.RamdomNumberGenerator(tailleX) + tailleY;
+		Scanner sc = new Scanner(System.in);
+		int numMob=0;
+		MenuIhm.MenuDifficulte();
+		String choix2 = sc.nextLine();
+		switch (choix2) {
+		case "1" : numMob = UtilService.RamdomNumberGenerator(tailleX/2) + tailleY/2;break;
+		case "3" : numMob = UtilService.RamdomNumberGenerator(tailleX) + tailleY*2;break;
+		default : numMob = UtilService.RamdomNumberGenerator(tailleX) + tailleY;break;
+		}
+		//numMob = UtilService.RamdomNumberGenerator(tailleX) + tailleY;
 		for (int i = 0; i < numMob; i++) {
 			MobService.CreateMob(donjon, tailleX, tailleY);
 		}
@@ -201,5 +211,8 @@ public class DonjonService {
 		// draw the bottom line
 		
 	}
+
+	
+
 
 }
