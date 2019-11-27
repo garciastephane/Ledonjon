@@ -5,7 +5,7 @@
 
 	<groupId>fr.afpa</groupId>
 	<artifactId>ledonjon</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>ledonjon</name>
@@ -26,7 +26,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>fr.afpa.cda.ledonjon.Gameplay</mainClass>
+							<mainClass>fr.afpa.ledonjon.Gameplay</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
