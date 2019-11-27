@@ -16,7 +16,7 @@ public class MobService {
 	 */
 	public static void CreateMob(Donjon donjon, int tailleX, int tailleY) {
 		Room room = RoomServices.FindValidRoom(donjon, tailleX, tailleY);
-		room.getMobs().add(new Mob(7 + UtilService.RamdomNumberGenerator(5), 2 + UtilService.RamdomNumberGenerator(2),
+		room.getMobs().add(new Mob(7 + UtilService.RamdomNumberGenerator(6), 2 + UtilService.RamdomNumberGenerator(3),
 				UtilService.RamdomNumberGenerator(9), true)) ;
 
 	}

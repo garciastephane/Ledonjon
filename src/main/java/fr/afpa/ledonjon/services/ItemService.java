@@ -53,7 +53,7 @@ public class ItemService {
 	 */
 
 	public static void Heal(Player didier) {
-		int receavedHp = UtilService.RamdomNumberGenerator(2) + 1;
+		int receavedHp = UtilService.RamdomNumberGenerator(5) + 1;
 		PlayerService.GainHp(didier, receavedHp);
 		ItemIhm.HealDisplay(receavedHp);
 	}
@@ -124,7 +124,7 @@ public class ItemService {
 	}
 
 	/**
-	 * Methode pour retirer un item a un personnaje
+	 * Methode pour retirer un item a un personnage
 	 * @param room
 	 * @param item
 	 */
