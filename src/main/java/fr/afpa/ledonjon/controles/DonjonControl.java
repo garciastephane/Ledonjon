@@ -7,35 +7,18 @@ import fr.afpa.ledonjon.entites.Room;
 public class DonjonControl {
 
 	/**
-	 * Methode qui confirme si le joueur a perdu la partie
-	 * 
-	 * @param didier
-	 * @return
-	 */
-
-	public static int isGameLost(Player didier) {
-		if (didier.getHealthPoint() <= 0) {
-			System.out.println("You are dead! GAME OVER");
-			return -1;
-		}
-		return 0;
-	}
-
-	/**
-	 * Methode qui permets de confirmer si le joueur a gagnee
+	 * Methode qui confirme si le joueur a perdu la partie ou si le joueur a gagnee
 	 * 
 	 * @param didier
 	 * @param room
 	 * @return
 	 */
 
-	public static int isGameWin(Player didier, Room room) {
-
-		if (room instanceof End) {
-			System.out.println("Congratulation, you win!!!!");
-			return -1;
-		}
-		return 0;
+	public static void EndGame(Player didier,Room room) {
+		if (didier.getHealthPoint() <= 0) {
+			System.out.println("You are dead! GAME OVER");
+		}else if (room instanceof End) {
+			System.out.println("Congratulation, you win!!!!");	
+		}	
 	}
-
 }

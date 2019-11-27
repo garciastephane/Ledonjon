@@ -13,15 +13,6 @@ import fr.afpa.ledonjon.entites.StrengthPotion;
 import fr.afpa.ledonjon.ihm.PlayerIhm;
 
 public class MenuService {
-	/**
-	 * Methode qui permets au joueur de faire un choix d action une fois dans une salle
-	 * @param choix
-	 * @param donjon
-	 * @param xPlayer
-	 * @param yPlayer
-	 * @param sc
-	 * @return
-	 */
 	public static int Choix(char choix, Donjon donjon, int xPlayer, int yPlayer , Scanner sc) {
 		Room roomS = null;
 		int i = 0;

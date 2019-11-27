@@ -1,5 +1,6 @@
 package fr.afpa.ledonjon.services;
 
+import fr.afpa.ledonjon.controles.CharacterControl;
 import fr.afpa.ledonjon.entites.Character;
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.Mob;
@@ -29,8 +30,9 @@ public class MobService {
 	public static void Attack(Character attacker, Character defender) {
 		System.out.println("---------------------\n");
 		System.out.println("The filthy monster attack you for " + attacker.getStrength() + " damages");
-		if(CharacterSevice.LoseHealth(defender, attacker.getStrength())) {
-			System.out.println("You got" + attacker.getHealthPoint() + " HP left");
+		CharacterSevice.LoseHealth(defender, attacker.getStrength());
+		if(CharacterControl.isAlive(defender)) {
+			System.out.println("You got " + defender.getHealthPoint() + " HP left");
 		}else {
 			System.out.println("he is dead");
 		}

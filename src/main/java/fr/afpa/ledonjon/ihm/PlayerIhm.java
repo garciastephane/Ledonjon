@@ -1,5 +1,6 @@
 package fr.afpa.ledonjon.ihm;
 
+import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
 import fr.afpa.ledonjon.entites.Item;
@@ -15,7 +16,7 @@ public class PlayerIhm {
 	 * 
 	 * @param donjon
 	 */
-	public static void LookAround(Room room) {
+	public static void LookAround(Donjon donjon, Room room) {
 		System.out.println("Player\n   HP       : " + room.getDidier().getHealthPoint() + "\n   Strength : "
 				+ room.getDidier().getStrength() + "\n   Gold     : " + room.getDidier().getGold());
 		int killcount = 0;
@@ -76,5 +77,7 @@ public class PlayerIhm {
 				System.out.println("There is " + Sm + " shiny slot machines on a table");
 			}
 		}
+		System.out.println("You take a look to your map");
+		DonjonIhm.DisplayFullDonjon(donjon);
 	}
 }

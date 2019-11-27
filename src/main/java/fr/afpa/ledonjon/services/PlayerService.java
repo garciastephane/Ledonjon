@@ -4,8 +4,7 @@ import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.StrengthPotion;
-
-
+import fr.afpa.ledonjon.controles.CharacterControl;
 import fr.afpa.ledonjon.entites.Character;
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
@@ -19,7 +18,7 @@ public class PlayerService {
 	 * @return
 	 */
 	public static void CreatePlayer(Room room) {
-		 room.setDidier(new Player(9 + UtilService.RamdomNumberGenerator(5), 2 + UtilService.RamdomNumberGenerator(2), 0, true));
+		 room.setDidier(new Player(21 + UtilService.RamdomNumberGenerator(5), 4 + UtilService.RamdomNumberGenerator(3), 0, true));
 	}
 
 	/**
@@ -52,11 +51,12 @@ public class PlayerService {
 	public static void Attack(Character attacker, Character defender) {
 		System.out.println("---------------------\n");
 		System.out.println("You attack the monster for " + attacker.getStrength() + " damages");
-		if (CharacterSevice.LoseHealth(defender, attacker.getStrength())) {
-			System.out.println("\nCongratulations! you beat that little bastard!" + defender.getGold() + "gold! \n");
+		CharacterSevice.LoseHealth(defender, attacker.getStrength());
+		if (!CharacterControl.isAlive(defender)) {
+			System.out.println("\nCongratulations! you beat the monster ! " + defender.getGold() + " gold! \n");
 			WinGold((Player) attacker, defender.getGold());
 		} else {
-			System.out.println("that filthy creature got" + attacker.getHealthPoint() + " HP left");
+			System.out.println("that filthy creature got " + defender.getHealthPoint() + " HP left");
 			MobService.Attack(defender, attacker);
 		}
 	}

@@ -1,5 +1,6 @@
 package fr.afpa.ledonjon.services;
 
+import fr.afpa.ledonjon.controles.CharacterControl;
 import fr.afpa.ledonjon.entites.Character;
 
 public class CharacterSevice {
@@ -10,10 +11,11 @@ public class CharacterSevice {
 	 * @param damages
 	 * @return
 	 */
-	public static boolean LoseHealth(Character defender, int damages) {
+	public static void LoseHealth(Character defender, int damages) {
 		defender.setHealthPoint(defender.getHealthPoint() - damages);	
-		if(defender.isAlive()) return true;
-		return false;
+		if (!CharacterControl.isAlive(defender)) {
+			defender.setAlive(false);
+		}
 	}
 }
 
