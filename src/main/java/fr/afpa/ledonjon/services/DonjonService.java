@@ -115,7 +115,7 @@ public class DonjonService {
 	 * @return
 	 */
 	public static boolean generateMob(Donjon donjon, int tailleX, int tailleY) {
-		int numMob = UtilService.RamdomNumberGenerator(7) + 1;
+		int numMob = UtilService.RamdomNumberGenerator(tailleX) + tailleY;
 		for (int i = 0; i < numMob; i++) {
 			MobService.CreateMob(donjon, tailleX, tailleY);
 		}
@@ -129,7 +129,7 @@ public class DonjonService {
 	 */
 
 	public static void generateItem(Donjon donjon, int tailleX, int tailleY) {
-		int numItem = UtilService.RamdomNumberGenerator(7) + 1;
+		int numItem = UtilService.RamdomNumberGenerator(tailleY) + tailleX;
 
 		for (int i = 0; i < numItem; i++) {
 			int typeItem = UtilService.RamdomNumberGenerator(4);

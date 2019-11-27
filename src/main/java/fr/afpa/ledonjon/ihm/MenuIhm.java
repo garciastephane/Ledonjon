@@ -74,6 +74,7 @@ public class MenuIhm {
 					which = sc.nextInt();
 					sc.nextLine();
 				} catch (Exception e) {
+					sc.nextLine();
 					System.out.println("invalide");
 				}
 			} while (which == 0 || which > donjon.getMaze()[xPlayer][yPlayer].getMobs().size());
@@ -113,6 +114,7 @@ public class MenuIhm {
 					which = sc.nextInt();
 					sc.nextLine();
 				} catch (Exception e) {
+					sc.nextLine();
 					System.out.println("invalide");
 				}
 			} while (which == 0 || which > donjon.getMaze()[xPlayer][yPlayer].getItems().size());
