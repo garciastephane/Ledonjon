@@ -3,8 +3,11 @@ package fr.afpa.ledonjon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import fr.afpa.ledonjon.controles.DonjonControl;
+import fr.afpa.ledonjon.controles.PlayerControl;
 import fr.afpa.ledonjon.controles.RoomControl;
 import fr.afpa.ledonjon.entites.Donjon;
+import fr.afpa.ledonjon.entites.End;
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
 import fr.afpa.ledonjon.entites.Mob;
@@ -42,7 +45,7 @@ public class AppTest {
 	public void testcreatePlayer() {
 		Room room = new Room();
 		Assertions.assertNull(room.getDidier());
-		PlayerService.CreatePlayer("David",room);
+		PlayerService.CreatePlayer("David", room);
 		Assertions.assertNotNull(room.getDidier());
 	}
 
@@ -97,7 +100,7 @@ public class AppTest {
 
 	public void testUseItem() {
 		Room room = new Room();
-		Player player = new Player("Charles",10, 1, 0, true);
+		Player player = new Player("Charles", 10, 1, 0, true);
 		HealthPotion healthpotion = new HealthPotion();
 		StrengthPotion strengthpotion = new StrengthPotion();
 		GoldPouch goldpouch = new GoldPouch();
@@ -122,9 +125,21 @@ public class AppTest {
 
 	@Test
 
+	public void testNumbItem() {
+		Room room = new Room();
+		ItemService.CreateGoldPouch(room);
+		ItemService.CreateStrengthPotion(room);
+		room.getItems().add(new GoldPouch());
+		room.getItems().add(new StrengthPotion());
+		Assertions.assertEquals(4, room.getItems().size());
+
+	}
+
+	@Test
+
 	public void testReceavedHeal() {
 
-		Player player = new Player("Stephane",10, 1, 0, true);
+		Player player = new Player("Stephane", 10, 1, 0, true);
 		ItemService.Heal(player);
 		Assertions.assertNotNull("The player gain heal");
 
@@ -134,7 +149,7 @@ public class AppTest {
 
 	public void testGainStrength() {
 
-		Player player = new Player("Nicolas",10, 1, 0, true);
+		Player player = new Player("Nicolas", 10, 1, 0, true);
 		ItemService.GainStrength(player);
 		Assertions.assertNotNull("The player gain strength");
 	}
@@ -143,7 +158,7 @@ public class AppTest {
 
 	public void testLootGold() {
 
-		Player player = new Player("Gaetan",10, 1, 0, true);
+		Player player = new Player("Gaetan", 10, 1, 0, true);
 		ItemService.LootGold(player);
 		Assertions.assertNotNull("The player loot gold");
 
@@ -153,24 +168,20 @@ public class AppTest {
 
 	public void testGamble() {
 
-		Player player = new Player("PAUL",10, 1, 0, true);
+		Player player = new Player("PAUL", 10, 1, 0, true);
 		ItemService.Gamble(player);
 		Assertions.assertNotNull("The player gamble");
 
 	}
-	
+
 	@Test
-	
+
 	public void testNumbAliveMob() {
-		Room room = new Room();
-		Mob mob = new Mob(10, 1, 0, true);
-		Mob mob1 = new Mob(11, 1, 0, true);
-		Mob mob2 = new Mob(11, 1, 0, false);
-		Mob mob3 = new Mob(11, 1, 0, true);
-		room.getMobs().add(mob);
-		room.getMobs().add(mob1);
-		room.getMobs().add(mob2);
-		room.getMobs().add(mob3);
+		Room room = new Room(); 
+		room.getMobs().add(new Mob(11, 1, 0, true));
+		room.getMobs().add(new Mob(11, 1, 0, true));
+		room.getMobs().add(new Mob(0, 1, 0, false));
+		room.getMobs().add(new Mob(11, 1, 0, true));
 		Assertions.assertEquals(RoomControl.numbAliveMob(room),3);
 		
 	}
@@ -187,9 +198,18 @@ public class AppTest {
 
 	@Test
 
+	public void testValidNamePlayer() {
+
+		PlayerControl.validNamePlayer("Seti");
+		Assertions.assertTrue(true);
+
+	}
+
+	@Test
+
 	public void testPlayerAttack() {
 
-		Player player = new Player("Seti",10, 1, 0, true);
+		Player player = new Player("Seti", 10, 1, 0, true);
 		Mob mob = new Mob(10, 1, 0, true);
 		PlayerService.Attack(player, mob);
 		PlayerService.Attack(mob, player);
@@ -202,17 +222,23 @@ public class AppTest {
 
 	public void testCharacterLoseHealth() {
 
-		Player player = new Player("Guillaume",10, 1, 0, true);
+		Player player = new Player("Guillaume", 10, 1, 0, true);
 		Mob mob = new Mob(10, 1, 0, true);
 		CharacterSevice.LoseHealth(player, 5);
 		CharacterSevice.LoseHealth(mob, 7);
 		Assertions.assertNotNull("The player lost HP ");
 
 	}
-	
 
-	
-	
-	
+	@Test
+
+	public void testEndGame() {
+		Player player2 = new Player("Guillaume", 0, 1, 0, true);
+		Room room = new End();
+		room.setDidier(new Player("Guillaume", 10, 1, 0, true));
+		Donjon donjon = new Donjon(3, 1);
+		Assertions.assertTrue(DonjonControl.EndGame(donjon, room.getDidier(), room));
+		Assertions.assertFalse(DonjonControl.EndGame(donjon, player2, room));
+	}
 
 }

@@ -17,15 +17,18 @@ public class DonjonControl {
 	 * @return
 	 */
 
-	public static void EndGame(Donjon donjon, Player didier,Room room) {
+	public static boolean EndGame(Donjon donjon, Player didier,Room room) {
 		if (didier.getHealthPoint() <= 0) {
 			System.out.println("You are dead! GAME OVER");
+			return false;
 		}else if (room instanceof End) {
 			System.out.println("Congratulation, you win!!!!");	
 			DonjonService.ChangeHighScore(donjon,didier);
 			DonjonIhm.ShowHigh(donjon.getHighScores());
 			DonjonService.WriteScore(donjon);
-		}	
+			return true;
+		}
+		return false;
 	}
 
 }
