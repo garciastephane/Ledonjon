@@ -3,6 +3,7 @@ package fr.afpa.ledonjon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import fr.afpa.ledonjon.controles.RoomControl;
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
@@ -43,7 +44,7 @@ public class AppTest {
 	public void testcreatePlayer() {
 		Room room = new Room();
 		Assertions.assertNull(room.getDidier());
-		PlayerService.CreatePlayer(room);
+		PlayerService.CreatePlayer("David",room);
 		Assertions.assertNotNull(room.getDidier());
 	}
 
@@ -98,7 +99,7 @@ public class AppTest {
 
 	public void testUseItem() {
 		Room room = new Room();
-		Player player = new Player(10, 1, 0, true);
+		Player player = new Player("Charles",10, 1, 0, true);
 		HealthPotion healthpotion = new HealthPotion();
 		StrengthPotion strengthpotion = new StrengthPotion();
 		GoldPouch goldpouch = new GoldPouch();
@@ -125,7 +126,7 @@ public class AppTest {
 
 	public void testReceavedHeal() {
 
-		Player player = new Player(10, 1, 0, true);
+		Player player = new Player("Stephane",10, 1, 0, true);
 		ItemService.Heal(player);
 		Assertions.assertNotNull("The player gain heal");
 
@@ -135,7 +136,7 @@ public class AppTest {
 
 	public void testGainStrength() {
 
-		Player player = new Player(10, 1, 0, true);
+		Player player = new Player("Nicolas",10, 1, 0, true);
 		ItemService.GainStrength(player);
 		Assertions.assertNotNull("The player gain strength");
 	}
@@ -144,7 +145,7 @@ public class AppTest {
 
 	public void testLootGold() {
 
-		Player player = new Player(10, 1, 0, true);
+		Player player = new Player("Gaetan",10, 1, 0, true);
 		ItemService.LootGold(player);
 		Assertions.assertNotNull("The player loot gold");
 
@@ -154,7 +155,7 @@ public class AppTest {
 
 	public void testGamble() {
 
-		Player player = new Player(10, 1, 0, true);
+		Player player = new Player("PAUL",10, 1, 0, true);
 		ItemService.Gamble(player);
 		Assertions.assertNotNull("The player gamble");
 
@@ -168,6 +169,7 @@ public class AppTest {
 		Mob mob1 = new Mob(11, 1, 0, true);
 		Mob mob2 = new Mob(11, 1, 0, false);
 		Mob mob3 = new Mob(11, 1, 0, true);
+		Assertions.assertEquals(RoomControl.numbAliveMob(room),room.getMobs().size());
 		
 	}
 
@@ -185,7 +187,7 @@ public class AppTest {
 
 	public void testPlayerAttack() {
 
-		Player player = new Player(10, 1, 0, true);
+		Player player = new Player("Seti",10, 1, 0, true);
 		Mob mob = new Mob(10, 1, 0, true);
 		PlayerService.Attack(player, mob);
 		PlayerService.Attack(mob, player);
@@ -198,7 +200,7 @@ public class AppTest {
 
 	public void testCharacterLoseHealth() {
 
-		Player player = new Player(10, 1, 0, true);
+		Player player = new Player("Guillaume",10, 1, 0, true);
 		Mob mob = new Mob(10, 1, 0, true);
 		CharacterSevice.LoseHealth(player, 5);
 		CharacterSevice.LoseHealth(mob, 7);
