@@ -25,13 +25,6 @@ import fr.afpa.ledonjon.services.PlayerService;
  */
 public class AppTest {
 
-	/**
-	 * Rigourous Test :-)
-	 */
-	public void testApp() {
-		Assertions.assertTrue(true);
-	}
-
 	@Test
 	public void testCreateMob() {
 		Donjon donjon = new Donjon(3, 1);
@@ -95,7 +88,17 @@ public class AppTest {
 		DonjonService.generateItem(donjon, 3, 1);
 		Assertions.assertTrue(4 < donjon.getMaze()[1][0].getItems().size());
 	}
+	
+	@Test
+	public void testDonjonContainGenerator() {
+		Assertions.assertTrue(DonjonService.DonjonContainGenerator(new Donjon(5, 5), 5, 5, "2", "Benoist"));
+	}
 
+	@Test
+	public void testChangeHighScore() {
+		Assertions.assertTrue(DonjonService.ChangeHighScore(new Donjon(5, 5), new Player("Benoist", 100, 10, 54, true)));
+	}
+	
 	@Test
 
 	public void testUseItem() {
@@ -199,10 +202,9 @@ public class AppTest {
 	@Test
 
 	public void testValidNamePlayer() {
-
-		PlayerControl.validNamePlayer("Seti");
-		Assertions.assertTrue(true);
-
+		Assertions.assertTrue(PlayerControl.validNamePlayer("Seti"));
+		Assertions.assertFalse(PlayerControl.validNamePlayer("jeanmariegertrude"));
+		Assertions.assertFalse(PlayerControl.validNamePlayer("jean8"));
 	}
 
 	@Test

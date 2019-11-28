@@ -26,13 +26,13 @@ public class DonjonService {
 	 * @param tailleY
 	 */
 
-	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY, String diff, String name) {
+	public static boolean DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY, String diff, String name) {
 		generateMaze(donjon, tailleX / 2, tailleY / 2);
 		GenerateWall(donjon);
 		PlayerService.CreatePlayer(name, donjon.getMaze()[0][0]);
 		generateMob(donjon, tailleX, tailleY, diff);
 		generateItem(donjon, tailleX, tailleY);
-
+		return true;
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class DonjonService {
 	 * @param cy
 	 */
 
-	public static void generateMaze(Donjon donjon, int cx, int cy) {
+	public static boolean generateMaze(Donjon donjon, int cx, int cy) {
 		DIR[] dirs = DIR.values();
 		Collections.shuffle(Arrays.asList(dirs));
 		for (DIR dir : dirs) {
@@ -55,6 +55,7 @@ public class DonjonService {
 				generateMaze(donjon, nx, ny);
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -126,7 +127,7 @@ public class DonjonService {
 	 * @param donjon
 	 */
 
-	public static void generateItem(Donjon donjon, int tailleX, int tailleY) {
+	public static boolean generateItem(Donjon donjon, int tailleX, int tailleY) {
 		int numItem = UtilService.RamdomNumberGenerator(tailleY) + tailleX;
 
 		for (int i = 0; i < numItem; i++) {
@@ -149,6 +150,7 @@ public class DonjonService {
 				break;
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -178,7 +180,7 @@ public class DonjonService {
 	 * 
 	 * @param donjon
 	 */
-	public static void GenerateWall(Donjon donjon) {
+	public static boolean GenerateWall(Donjon donjon) {
 		for (int i = 0; i < donjon.getX(); i++) {
 			for (int j = 1; j < donjon.getY(); j++) {
 				if (!((donjon.getMaze()[i][j].getBit() & 1) == 0)) {
@@ -195,6 +197,7 @@ public class DonjonService {
 				}
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -249,7 +252,7 @@ public class DonjonService {
 		return highScores;
 	}
 
-	public static void ChangeHighScore(Donjon donjon, Player didier) {
+	public static boolean ChangeHighScore(Donjon donjon, Player didier) {
 		
 		if (donjon.getHighScores().size() == 0) {
 			donjon.getHighScores().add(0, new HighScore(didier.getName(), didier.getGold()));
@@ -266,6 +269,6 @@ public class DonjonService {
 				}
 			}
 		}
-		
+		return true;
 	}
 }
