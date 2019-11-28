@@ -4,8 +4,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import fr.afpa.ledonjon.entites.Donjon;
+import fr.afpa.ledonjon.entites.GoldPouch;
+import fr.afpa.ledonjon.entites.HealthPotion;
+import fr.afpa.ledonjon.entites.Item;
 import fr.afpa.ledonjon.entites.Mob;
+import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
+import fr.afpa.ledonjon.entites.SlotMachine;
+import fr.afpa.ledonjon.entites.StrengthPotion;
+import fr.afpa.ledonjon.services.CharacterSevice;
+import fr.afpa.ledonjon.services.DonjonService;
+import fr.afpa.ledonjon.services.ItemService;
 import fr.afpa.ledonjon.services.MobService;
 import fr.afpa.ledonjon.services.PlayerService;
 
@@ -31,211 +40,175 @@ public class AppTest {
 	}
 
 	@Test
-	public void testAttack() {
-
-	}
-
-	/**
-	 * 
-	 * Create the test case
-	 *
-	 * 
-	 * 
-	 * @param testName name of the test case
-	 * 
-	 */
-
-	@Test
-	public void creerListPlayer() {
+	public void testcreatePlayer() {
 		Room room = new Room();
 		Assertions.assertNull(room.getDidier());
 		PlayerService.CreatePlayer(room);
 		Assertions.assertNotNull(room.getDidier());
 	}
 
-//	public void testSize() {
-//
-//		assertEquals("Taille de la liste", 2, listTest.size());
-//
-//	}
-//
-//	public void testDonjonContainGenerator() {
-//
-//		assertNotNull("A new donjon is generate ", DonjonService.DonjonContainGenerator("Toto", donjon, 8, 8));
-//
-//	}
-//
-//	public void testAddGeneratePlayer() {
-//
-//		lisTest.add("Pepe", room);
-//
-//		assertEquals("A new player is add to the list ", PlayerService.CreatePlayer();
-//
-//
-//
-//	}
-//
-//	public void testGenerateMob() {
-//
-//		assertEquals("A new mob is generate", MobService.CreateMob(donjon, 8, 8));
-//
-//	}
-//
-//	public void testGenerateHealthPotion() {
-//
-//		assertNotNull("A new healthPotion is generate", ItemService.CreateHealthPotion(room));
-//
-//	}
-//
-//	public void testGenerateStrenghtPotion() {
-//
-//		assertNotNull("A new strenghtPotion is generate", ItemService.CreateStrengthPotion(room));
-//
-//	}
-//
-//	public void testGenerateGoldPouch() {
-//
-//		assertNotNull("A new goldPouch is generate", ItemService.CreateGoldPouch(room));
-//
-//	}
-//
-//	public void testGenerateSlotMachine() {
-//
-//		assertNotNull("A new slot is generate", ItemService.CreateSlotMachine(room));
-//
-//	}
-//
-//	public void testPlayerMove() {
-//
-//		assertEquals("The player move to the ", PlayerService.Move(room, roomS));
-//
-//	}
-//
-//	public void testPlayerAttack() {
-//
-//		assertEquals("The player attack ", PlayerService.Attack(attacker, defender));
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @return
-//	 * 
-//	 */
-//
-//	public boolean testIsAlive() {
-//
-//		return this.getLifePoints() > 0;
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @return
-//	 * 
-//	 */
-//
-//	public int getLifePoints() {
-//
-//		return this.getLifePoints();
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @param lifePoints
-//	 * 
-//	 */
-//
-//	public void setLifePoints(int lifePoints) {
-//
-//		this.setLifePoints = lifePoints;
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @return
-//	 * 
-//	 */
-//
-//	public int getAttackPoints() {
-//
-//		return this.getAttackPoints();
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @param attackPoints
-//	 * 
-//	 */
-//
-//	public void setAttackPoints(int attackPoints) {
-//
-//		this.AttackPoints = attackPoints;
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @return
-//	 * 
-//	 */
-//
-//	public int getGold() {
-//
-//		return this.getGold();
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @param gold
-//	 * 
-//	 */
-//
-//	public void setGold(int gold) {
-//
-//		this.gold = gold;
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @return
-//	 * 
-//	 */
-//
-//	public boolean foundStartRoom() {
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * 
-//	 * 
-//	 * @return
-//	 * 
-//	 */
-//
-//	public boolean foundEndRoom() {
-//
-//	}
+	@Test
+	public void testGenerateHealthPotion() {
+		Room room = new Room();
+		ItemService.CreateHealthPotion(room);
+		Assertions.assertNotNull(room.getItems().get(0), "A new healthPotion is generate");
+
+	}
+
+	@Test
+
+	public void testGenerateStrenghtPotion() {
+		Room room = new Room();
+		ItemService.CreateStrengthPotion(room);
+		Assertions.assertNotNull("A new strenghtPotion is generate");
+
+	}
+
+	@Test
+
+	public void testGenerateGoldPouch() {
+		Room room = new Room();
+		ItemService.CreateGoldPouch(room);
+		Assertions.assertNotNull("A new goldPouch is generate");
+
+	}
+
+	@Test
+
+	public void testGenerateSlotMachine() {
+		Room room = new Room();
+		ItemService.CreateSlotMachine(room);
+		Assertions.assertNotNull("A new slot is generate");
+
+	}
+
+	@Test
+	public void testGenerateItem() {
+		Donjon donjon = new Donjon(3, 1);
+		donjon.getMaze()[1][0].getItems().add(new HealthPotion());
+		donjon.getMaze()[1][0].getItems().add(new StrengthPotion());
+		donjon.getMaze()[1][0].getItems().add(new GoldPouch());
+		donjon.getMaze()[1][0].getItems().add(new SlotMachine());
+
+		DonjonService.generateItem(donjon, 3, 1);
+		Assertions.assertTrue(4 < donjon.getMaze()[1][0].getItems().size());
+	}
+
+	@Test
+
+	public void testUseItem() {
+		Room room = new Room();
+		Player player = new Player(10, 1, 0, true);
+		HealthPotion healthpotion = new HealthPotion();
+		StrengthPotion strengthpotion = new StrengthPotion();
+		GoldPouch goldpouch = new GoldPouch();
+		SlotMachine slotmachine = new SlotMachine();
+		PlayerService.UseItem(player, room, healthpotion);
+		PlayerService.UseItem(player, room, strengthpotion);
+		PlayerService.UseItem(player, room, goldpouch);
+		PlayerService.UseItem(player, room, slotmachine);
+		Assertions.assertNotNull("We use a item");
+	}
+
+	@Test
+
+	public void testRemoveItem() {
+		Room room = new Room();
+		GoldPouch goldpouch = new GoldPouch();
+		ItemService.CreateGoldPouch(room);
+		ItemService.RemoveItem(room, goldpouch);
+		Assertions.assertNotNull("We remove a item");
+
+	}
+
+	@Test
+
+	public void testReceavedHeal() {
+
+		Player player = new Player(10, 1, 0, true);
+		ItemService.Heal(player);
+		Assertions.assertNotNull("The player gain heal");
+
+	}
+
+	@Test
+
+	public void testGainStrength() {
+
+		Player player = new Player(10, 1, 0, true);
+		ItemService.GainStrength(player);
+		Assertions.assertNotNull("The player gain strength");
+	}
+
+	@Test
+
+	public void testLootGold() {
+
+		Player player = new Player(10, 1, 0, true);
+		ItemService.LootGold(player);
+		Assertions.assertNotNull("The player loot gold");
+
+	}
+
+	@Test
+
+	public void testGamble() {
+
+		Player player = new Player(10, 1, 0, true);
+		ItemService.Gamble(player);
+		Assertions.assertNotNull("The player gamble");
+
+	}
+	
+	@Test
+	
+	public void testNumbAliveMob() {
+		Room room = new Room();
+		Mob mob = new Mob(10, 1, 0, true);
+		Mob mob1 = new Mob(11, 1, 0, true);
+		Mob mob2 = new Mob(11, 1, 0, false);
+		Mob mob3 = new Mob(11, 1, 0, true);
+		
+	}
+
+	@Test
+
+	public void testPlayerMove() {
+		Room room = new Room();
+		Room roomS = new Room();
+		PlayerService.Move(room, roomS);
+		Assertions.assertNotNull("The player move to the");
+
+	}
+
+	@Test
+
+	public void testPlayerAttack() {
+
+		Player player = new Player(10, 1, 0, true);
+		Mob mob = new Mob(10, 1, 0, true);
+		PlayerService.Attack(player, mob);
+		PlayerService.Attack(mob, player);
+		Assertions.assertNotNull("The player attack ");
+		Assertions.assertNotNull("The mob attack ");
+
+	}
+
+	@Test
+
+	public void testCharacterLoseHealth() {
+
+		Player player = new Player(10, 1, 0, true);
+		Mob mob = new Mob(10, 1, 0, true);
+		CharacterSevice.LoseHealth(player, 5);
+		CharacterSevice.LoseHealth(mob, 7);
+		Assertions.assertNotNull("The player lost HP ");
+
+	}
+	
+
+	
+	
+	
+
 }
