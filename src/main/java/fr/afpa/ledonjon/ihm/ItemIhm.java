@@ -36,7 +36,13 @@ public class ItemIhm {
 	 * @param d100
 	 */
 	public static void RewardDisplay(int d100) {
-		if (d100 > 55 && d100 <= 60) {
+		if (d100 <= 30) {
+			System.out.println("");
+		} else if (d100 > 30 && d100 <= 50) {
+			
+		} else if (d100 > 50 && d100 <= 55) {
+			
+		} else if (d100 > 55 && d100 <= 60) {
 			System.out.println("Nothing happen....Ah!!..no nothing.");
 		} else if (d100 > 60 && d100 <= 65) {
 			System.out.println(

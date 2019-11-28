@@ -5,7 +5,7 @@ import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
 import fr.afpa.ledonjon.entites.SlotMachine;
 import fr.afpa.ledonjon.entites.StrengthPotion;
-
+import fr.afpa.ledonjon.ihm.ItemIhm;
 import fr.afpa.ledonjon.controles.CharacterControl;
 import fr.afpa.ledonjon.entites.Character;
 import fr.afpa.ledonjon.entites.GoldPouch;
@@ -42,6 +42,8 @@ public class PlayerService {
 		} else if (item instanceof SlotMachine) {
 			if (didier.getGold() > 0) {
 				ItemService.Gamble(didier);
+			}else {
+				ItemIhm.RewardDisplay(-1);
 			}
 		}
 		ItemService.RemoveItem(room, item);

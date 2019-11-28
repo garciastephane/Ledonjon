@@ -127,14 +127,13 @@ public class AppTest {
 	}
 
 	@Test
-
 	public void testNumbItem() {
 		Room room = new Room();
 		ItemService.CreateGoldPouch(room);
 		ItemService.CreateStrengthPotion(room);
 		room.getItems().add(new GoldPouch());
 		room.getItems().add(new StrengthPotion());
-		Assertions.assertEquals(4, room.getItems().size());
+		Assertions.assertEquals(RoomControl.numbItem(room), room.getItems().size());
 
 	}
 
@@ -170,10 +169,7 @@ public class AppTest {
 	@Test
 
 	public void testGamble() {
-
-		Player player = new Player("PAUL", 10, 1, 0, true);
-		ItemService.Gamble(player);
-		Assertions.assertNotNull("The player gamble");
+		Assertions.assertTrue(ItemService.Gamble(new Player("PAUL", 10, 1, 0, true)));
 
 	}
 
