@@ -3,6 +3,7 @@ package fr.afpa.ledonjon;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import fr.afpa.ledonjon.controles.CharacterControl;
 import fr.afpa.ledonjon.controles.DonjonControl;
 import fr.afpa.ledonjon.controles.PlayerControl;
 import fr.afpa.ledonjon.controles.RoomControl;
@@ -20,6 +21,7 @@ import fr.afpa.ledonjon.services.DonjonService;
 import fr.afpa.ledonjon.services.ItemService;
 import fr.afpa.ledonjon.services.MobService;
 import fr.afpa.ledonjon.services.PlayerService;
+
 /**
  * Unit test for simple App.
  */
@@ -35,11 +37,18 @@ public class AppTest {
 	}
 
 	@Test
-	public void testcreatePlayer() {
+	public void testCreatePlayer() {
 		Room room = new Room();
 		Assertions.assertNull(room.getDidier());
 		PlayerService.CreatePlayer("David", room);
 		Assertions.assertNotNull(room.getDidier());
+	}
+
+	@Test
+	public void testIsAlive() {
+		Player player = new Player("Charles", 10, 1, 0, true);
+		Assertions.assertTrue(CharacterControl.isAlive(player));
+
 	}
 
 	@Test
@@ -84,7 +93,6 @@ public class AppTest {
 		donjon.getMaze()[1][0].getItems().add(new StrengthPotion());
 		donjon.getMaze()[1][0].getItems().add(new GoldPouch());
 		donjon.getMaze()[1][0].getItems().add(new SlotMachine());
-
 		DonjonService.generateItem(donjon, 3, 1);
 		Assertions.assertTrue(4 < donjon.getMaze()[1][0].getItems().size());
 	}
@@ -176,13 +184,13 @@ public class AppTest {
 	@Test
 
 	public void testNumbAliveMob() {
-		Room room = new Room(); 
+		Room room = new Room();
 		room.getMobs().add(new Mob(11, 1, 0, true));
 		room.getMobs().add(new Mob(11, 1, 0, true));
 		room.getMobs().add(new Mob(0, 1, 0, false));
 		room.getMobs().add(new Mob(11, 1, 0, true));
-		Assertions.assertEquals(RoomControl.numbAliveMob(room),3);
-		
+		Assertions.assertEquals(RoomControl.numbAliveMob(room), 3);
+
 	}
 
 	@Test
