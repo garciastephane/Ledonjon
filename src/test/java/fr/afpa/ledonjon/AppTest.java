@@ -7,7 +7,6 @@ import fr.afpa.ledonjon.controles.RoomControl;
 import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
-import fr.afpa.ledonjon.entites.Item;
 import fr.afpa.ledonjon.entites.Mob;
 import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
@@ -17,6 +16,7 @@ import fr.afpa.ledonjon.services.CharacterSevice;
 import fr.afpa.ledonjon.services.DonjonService;
 import fr.afpa.ledonjon.services.ItemService;
 import fr.afpa.ledonjon.services.MobService;
+import fr.afpa.ledonjon.services.PlayerService;
 /**
  * Unit test for simple App.
  */
@@ -167,7 +167,11 @@ public class AppTest {
 		Mob mob1 = new Mob(11, 1, 0, true);
 		Mob mob2 = new Mob(11, 1, 0, false);
 		Mob mob3 = new Mob(11, 1, 0, true);
-		Assertions.assertEquals(RoomControl.numbAliveMob(room),room.getMobs().size());
+		room.getMobs().add(mob);
+		room.getMobs().add(mob1);
+		room.getMobs().add(mob2);
+		room.getMobs().add(mob3);
+		Assertions.assertEquals(RoomControl.numbAliveMob(room),3);
 		
 	}
 
