@@ -1,9 +1,18 @@
 package fr.afpa.ledonjon.services;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Scanner;
 import fr.afpa.ledonjon.entites.Donjon;
+import fr.afpa.ledonjon.entites.HighScore;
+import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
 
 public class DonjonService {
@@ -17,39 +26,13 @@ public class DonjonService {
 	 * @param tailleY
 	 */
 
-
-	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY, String diff,String name) {
+	public static void DonjonContainGenerator(Donjon donjon, int tailleX, int tailleY, String diff, String name) {
 		generateMaze(donjon, tailleX / 2, tailleY / 2);
 		GenerateWall(donjon);
-		PlayerService.CreatePlayer(name ,donjon.getMaze()[0][0]);
+		PlayerService.CreatePlayer(name, donjon.getMaze()[0][0]);
 		generateMob(donjon, tailleX, tailleY, diff);
 		generateItem(donjon, tailleX, tailleY);
 
-	}
-
-	/**
-	 * Methode qui permets de configurer le parametre X sur la map
-	 * 
-	 * @return
-	 */
-
-	public static int configXMaze(Scanner in) {
-		System.out.println("largeur du labyrinthe ?");
-		int x = in.nextInt();
-		in.nextLine();
-		return x;
-	}
-
-	/**
-	 * Methode qui permets de configurer le parametre Y sur la map
-	 * 
-	 * @return
-	 */
-	public static int configYMaze(Scanner in) {
-		System.out.println("hauteur du labyrinthe ?");
-		int y = in.nextInt();
-		in.nextLine();
-		return y;
 	}
 
 	/**
@@ -212,5 +195,77 @@ public class DonjonService {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Methode qui permets de sauvergarder le score du joueur
+	 * 
+	 * @param didier
+	 */
+	public static void WriteScore(Donjon donjon) {
+		DataOutputStream dataOutput = null;
+		try {
+			dataOutput = new DataOutputStream(new FileOutputStream(".\\save\\SauvegardeScore.save"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			for (HighScore hs : donjon.getHighScores()) {
+				dataOutput.writeUTF(hs.getNamePlayer());
+				dataOutput.writeInt(hs.getScore());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				dataOutput.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static ArrayList<HighScore> ReadScore() {
+		ArrayList<HighScore> highScores = new ArrayList<>();
+		DataInputStream dataInput = null;
+		try {
+			dataInput = new DataInputStream(new FileInputStream(".\\save\\SauvegardeScore.save"));
+			try {
+				while (true) {
+					String namePlayer = dataInput.readUTF();
+					int score = dataInput.readInt();
+					HighScore hs = new HighScore(namePlayer, score);
+					highScores.add(hs);
+				}
+			} catch (EOFException ex) {
+				
+			}
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		return highScores;
+	}
+
+	public static void ChangeHighScore(Donjon donjon, Player didier) {
+		
+		if (donjon.getHighScores().size() == 0) {
+			donjon.getHighScores().add(0, new HighScore(didier.getName(), didier.getGold()));
+		} else {
+				donjon.getHighScores().add(new HighScore(didier.getName(), didier.getGold()));
+		}
+		HighScore temp = null;
+		for (int i = 0;i < donjon.getHighScores().size() ;i++ ) {
+			for (int j = 0;j < donjon.getHighScores().size()-1 ;j++ ) {
+				if (donjon.getHighScores().get(j).getScore()<donjon.getHighScores().get(j+1).getScore()) {
+					temp = donjon.getHighScores().get(j);
+					donjon.getHighScores().set(j, donjon.getHighScores().get(j+1));
+					donjon.getHighScores().set(j+1, temp);
+				}
+			}
+		}
+		
 	}
 }

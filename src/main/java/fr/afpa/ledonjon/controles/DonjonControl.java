@@ -1,9 +1,11 @@
 package fr.afpa.ledonjon.controles;
 
+import fr.afpa.ledonjon.entites.Donjon;
 import fr.afpa.ledonjon.entites.End;
 import fr.afpa.ledonjon.entites.Player;
 import fr.afpa.ledonjon.entites.Room;
-import fr.afpa.ledonjon.services.EndService;
+import fr.afpa.ledonjon.ihm.DonjonIhm;
+import fr.afpa.ledonjon.services.DonjonService;
 
 public class DonjonControl {
 
@@ -15,12 +17,15 @@ public class DonjonControl {
 	 * @return
 	 */
 
-	public static void EndGame(Player didier,Room room) {
+	public static void EndGame(Donjon donjon, Player didier,Room room) {
 		if (didier.getHealthPoint() <= 0) {
 			System.out.println("You are dead! GAME OVER");
 		}else if (room instanceof End) {
 			System.out.println("Congratulation, you win!!!!");	
-			EndService.ecritureScore(didier);
+			DonjonService.ChangeHighScore(donjon,didier);
+			DonjonIhm.ShowHigh(donjon.getHighScores());
+			DonjonService.WriteScore(donjon);
 		}	
 	}
+
 }

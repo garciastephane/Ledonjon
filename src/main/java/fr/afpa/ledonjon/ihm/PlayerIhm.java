@@ -16,10 +16,11 @@ public class PlayerIhm {
 	String nm = null;
 
 		public static String askName(Scanner sc) {
-		System.out.println("What s your name : ");
-		String name = sc.next();
-		sc.nextLine();
+			String name = null;
 		do {
+			System.out.println("What s your name : ");
+			name = sc.next();
+			sc.nextLine();
 			if (PlayerControl.validNamePlayer(name) == false) {
 				System.out.println("The name should include letters");
 				name = null;

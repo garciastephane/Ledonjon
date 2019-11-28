@@ -17,8 +17,6 @@ import fr.afpa.ledonjon.services.CharacterSevice;
 import fr.afpa.ledonjon.services.DonjonService;
 import fr.afpa.ledonjon.services.ItemService;
 import fr.afpa.ledonjon.services.MobService;
-import fr.afpa.ledonjon.services.PlayerService;
-
 /**
  * Unit test for simple App.
  */

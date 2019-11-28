@@ -1,9 +1,76 @@
 package fr.afpa.ledonjon.ihm;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import fr.afpa.ledonjon.controles.RoomControl;
 import fr.afpa.ledonjon.entites.Donjon;
+import fr.afpa.ledonjon.entites.HighScore;
+import fr.afpa.ledonjon.services.DonjonService;
 
 public class DonjonIhm {
+
+	public static Donjon ConfigDonjon(String name, Scanner sc) {
+		String choixDiff = null;
+		int tailleX = 8;
+		int tailleY = 8;
+		Donjon donjon = null;
+		do {
+			MenuIhm.MenuInit();
+			choixDiff = sc.nextLine();
+			switch (choixDiff) {
+			case "1":
+				donjon = new Donjon(tailleX, tailleY);
+				DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "2", name);
+				break;
+			case "2":
+				System.out.println("Choose the weight");
+				try {
+					tailleY = sc.nextInt();
+					sc.nextLine();
+				} catch (Exception e) {
+					sc.nextLine();
+					System.out.println("invalid");
+				}
+				System.out.println("Choose the height");
+				try {
+					tailleX = sc.nextInt();
+					sc.nextLine();
+				} catch (Exception e) {
+					sc.nextLine();
+					System.out.println("invalid");
+				}
+				donjon = new Donjon(tailleX, tailleY);
+				do {
+
+					MenuIhm.MenuDifficulte();
+					choixDiff = sc.nextLine();
+					switch (choixDiff) {
+					case "1":
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "1", name);
+						break;
+					case "2":
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "2", name);
+						break;
+					case "3":
+						DonjonService.DonjonContainGenerator(donjon, tailleX, tailleY, "3", name);
+						break;
+					default:
+						choixDiff = null;
+						break;
+					}
+				} while (choixDiff == null);
+				break;
+			case "3":
+				ShowHigh(donjon.getHighScores());
+				break;
+			default:
+				choixDiff = null;
+				break;
+			}
+		} while (choixDiff == null);
+		return donjon;
+	}
 
 	/**
 	 * Methode qui permets de afficher le donjon
@@ -148,7 +215,6 @@ public class DonjonIhm {
 
 	}
 
-
 	/**
 	 * Methode qui permets d afficher le joueur dans le donjon
 	 * 
@@ -199,6 +265,20 @@ public class DonjonIhm {
 			System.out.print("+-----");
 		}
 		System.out.println("+");
+	}
+
+	/**
+	 * Methode qui permets de montrer les dix grands scores du jeu
+	 * 
+	 * @param didier
+	 * @return
+	 */
+	public static void ShowHigh(ArrayList<HighScore> highScores) {
+		System.out.println("High Score");
+		for (int i = 0; i < highScores.size() && i < 10; i++) {
+			System.out.println(highScores.get(i).getNamePlayer() + "\t" + highScores.get(i).getScore());
+		}
+
 	}
 
 }

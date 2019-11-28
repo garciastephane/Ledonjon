@@ -1,11 +1,15 @@
 package fr.afpa.ledonjon.entites;
 
+import java.util.ArrayList;
+
+import fr.afpa.ledonjon.services.DonjonService;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class Donjon {
+	ArrayList<HighScore> highScores;
 	private int x;
 	private int y;
 	private final Room[][] maze;
@@ -27,7 +31,7 @@ public class Donjon {
 		}
 		maze[0][0]=new Start();
 		maze[x-1][y-1]=new End();
-		
+		highScores = DonjonService.ReadScore();
 	}
 
 }
