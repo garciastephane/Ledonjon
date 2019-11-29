@@ -10,6 +10,9 @@ public class UtilService {
 	 * @return
 	 */
 	public static int RamdomNumberGenerator(int nbMax) {
-		return new Random().nextInt(nbMax);
+		if (nbMax > 0) {
+			return new Random().nextInt(nbMax);
+		}
+		return 0;
 	}
 }

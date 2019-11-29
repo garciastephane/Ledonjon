@@ -8,7 +8,6 @@ import fr.afpa.ledonjon.controles.DonjonControl;
 import fr.afpa.ledonjon.controles.PlayerControl;
 import fr.afpa.ledonjon.controles.RoomControl;
 import fr.afpa.ledonjon.entites.Donjon;
-import fr.afpa.ledonjon.entites.End;
 import fr.afpa.ledonjon.entites.GoldPouch;
 import fr.afpa.ledonjon.entites.HealthPotion;
 import fr.afpa.ledonjon.entites.Mob;
@@ -240,10 +239,10 @@ public class AppTest {
 
 	public void testEndGame() {
 		Player player2 = new Player("Guillaume", 0, 1, 0, true);
-		Room room = new End();
+		Room room = new Room();
 		room.setDidier(new Player("Guillaume", 10, 1, 0, true));
 		Donjon donjon = new Donjon(3, 1);
-		Assertions.assertTrue(DonjonControl.EndGame(donjon, room.getDidier(), room));
+		Assertions.assertFalse(DonjonControl.EndGame(donjon, room.getDidier(), room));
 		Assertions.assertFalse(DonjonControl.EndGame(donjon, player2, room));
 	}
 
