@@ -61,9 +61,6 @@ public class DonjonIhm {
 					}
 				} while (choixDiff == null);
 				break;
-			case "3":
-				ShowHigh(donjon.getHighScores());
-				break;
 			default:
 				choixDiff = null;
 				break;

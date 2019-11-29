@@ -53,7 +53,6 @@ public class MenuIhm {
 	public static void MenuInit() {
 		System.out.println("1-Quick PLay");
 		System.out.println("2-Choose difficulty");
-		System.out.println("3-Diplay High Score");
 		}
 	
 	public static void MenuDifficulte() {

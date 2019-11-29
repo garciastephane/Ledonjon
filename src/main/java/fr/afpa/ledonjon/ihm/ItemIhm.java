@@ -41,7 +41,7 @@ public class ItemIhm {
 		} else if (d100 >= 0 && d100 <= 30) {
 			System.out.println("a red vial come out. it's a heath potion");
 		} else if (d100 > 30 && d100 <= 50) {
-			System.out.println("a yellow vial come out. it's a heath potion");
+			System.out.println("a yellow vial come out. it's a strength potion");
 		} else if (d100 > 50 && d100 <= 55) {
 			System.out.println("gold !!! gold!!!");
 		} else if (d100 > 55 && d100 <= 60) {
